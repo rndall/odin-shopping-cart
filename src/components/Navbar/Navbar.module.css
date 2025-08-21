@@ -1,17 +1,18 @@
 .header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1.25rem;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  padding-block: 1.25rem;
 }
 
 .navContainer {
-  flex: 1;
-  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .navList {
-  display: flex; 
+  display: flex;
   gap: 1rem;
   justify-content: center;
 }
@@ -23,11 +24,11 @@
 .cartLink {
   composes: navLink;
   position: absolute;
-  right: 1.5rem;
+  right: 1rem;
 }
 
 @media (width >= 40rem) {
   .header {
-    padding: 2rem 1.5rem ;
+    padding-block: 2rem;
   }
 }
