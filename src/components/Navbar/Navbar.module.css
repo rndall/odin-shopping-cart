@@ -1,0 +1,33 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.25rem;
+}
+
+.navContainer {
+  flex: 1;
+  justify-self: center;
+}
+
+.navList {
+  display: flex; 
+  gap: 1rem;
+  justify-content: center;
+}
+
+.navLink:hover {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.cartLink {
+  composes: navLink;
+  position: absolute;
+  right: 1.5rem;
+}
+
+@media (width >= 40rem) {
+  .header {
+    padding: 2rem 1.5rem ;
+  }
+}
