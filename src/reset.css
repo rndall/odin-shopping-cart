@@ -78,3 +78,7 @@ a {
   text-decoration: inherit;
   color: inherit;
 }
+
+button {
+  border: none;
+}

@@ -1,0 +1,42 @@
+.heroContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.heroContainer *+* {
+  margin-top: 24px;
+}
+
+.heading {
+  text-transform: uppercase;
+  font-family: "Anton", sans-serif;
+  font-size: 2.25rem;
+  text-align: center;
+}
+
+.collage {
+  background-color: var(--primary-color);
+  padding-block: 30%;
+  margin-top: 48px;
+  position: relative;
+}
+
+.collageImage {
+  position: absolute;
+}
+
+.collageImage1 {
+  composes: collageImage;
+  transform: rotate(-10deg);
+  max-width: 42%;
+  top: -7%;
+  left: 15%;
+}
+
+.collageImage2 {
+  composes: collageImage;
+  transform: rotate(15deg);
+  max-width: 30%;
+  bottom: 8%;
+  right: 15%;
+}
