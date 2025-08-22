@@ -1,11 +1,9 @@
 .header {
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
   padding-block: 1.25rem;
 }
 
 .navContainer {
+  margin-inline: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,8 +25,18 @@
   right: 1rem;
 }
 
-@media (width >= 40rem) {
+@media (width >=40rem) {
   .header {
     padding-block: 2rem;
+  }
+
+  .cartLink {
+    right: 2rem;
+  }
+}
+
+@media (width >=96rem) {
+  .navContainer {
+    max-width: 96rem;
   }
 }

@@ -13,40 +13,42 @@ body {
 }
 
 .container {
+  --padding-inline: 1rem;
+
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-inline: var(--padding-inline);
 }
 
-@media (width >= 40rem) {
+@media (width >=40rem) {
   .container {
+    --padding-inline: 2rem;
+
     max-width: 40rem;
   }
 }
 
-@media (width >= 48rem) {
+@media (width >=48rem) {
   .container {
     max-width: 48rem;
   }
 }
 
-@media (width >= 64rem) {
+@media (width >=64rem) {
   .container {
     max-width: 64rem;
   }
 }
 
-@media (width >= 80rem) {
+@media (width >=80rem) {
   .container {
     max-width: 80rem;
   }
 }
 
-@media (width >= 96rem) {
+@media (width >=96rem) {
   .container {
     max-width: 96rem;
   }
 }
-

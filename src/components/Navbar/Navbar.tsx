@@ -9,7 +9,7 @@ export default function Navbar() {
 
   return (
     <header className={styles.header}>
-      <div className={`${styles.navContainer} container`} style={{ position: "relative" }}>
+      <div className={`${styles.navContainer}`} style={{ position: "relative" }}>
         <nav>
           <ul className={styles.navList}>
             <li>
