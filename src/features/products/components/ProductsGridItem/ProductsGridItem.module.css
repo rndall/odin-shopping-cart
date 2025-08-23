@@ -1,0 +1,33 @@
+.product {
+  padding: 0 1rem 1.125rem 1rem;
+}
+
+.productContainer {
+  border-bottom: 2px solid black;
+  padding-block-end: 2.375rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: baseline;
+}
+
+.productDetails {
+  display: flex;
+  flex-direction: column;
+  gap: .375rem;
+}
+
+.productTitle {
+  font-size: 1.25rem;
+  text-transform: uppercase;
+}
+
+.productPrice {
+  font-size: .875rem;
+}
+
+.productRating {
+  display: flex;
+  gap: .25rem;
+  align-items: center;
+}

@@ -11,7 +11,11 @@
   opacity: 0.8;
 }
 
-.fullWidth {
+.sm {
   composes: btn;
+  padding: .5rem 1rem;
+}
+
+.fullWidth {
   width: 100%;
 }

@@ -2,7 +2,7 @@ import styles from "./Hero.module.css"
 
 import { Link } from "react-router"
 
-import Button from "../Button/Button"
+import Button from "../ui/Button/Button"
 
 export default function Hero() {
   return (
