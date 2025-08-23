@@ -1,5 +1,9 @@
 .header {
   padding-block: 1.25rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: var(--background-color);
 }
 
 .navContainer {
