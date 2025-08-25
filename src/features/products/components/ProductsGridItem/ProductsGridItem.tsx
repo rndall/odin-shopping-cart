@@ -4,23 +4,29 @@ import { Star } from "lucide-react"
 
 import Button from "../../../../components/ui/Button/Button"
 
-export default function ProductsGridItem() {
+import type { Product } from "../../types"
+
+export default function ProductsGridItem({ product }: { product: Product }) {
+  const { image, title, rating, price } = product
+
   return (
     <div className={style.product}>
       <div className={style.productContainer}>
-        <img src="https://placecats.com/300/400" />
+        <div className={style.imageBg}>
+          <img className={style.productImage} src={image} />
+        </div>
 
         <div className={style.productDetails}>
           <div className={style.productHeading}>
-            <h2 className={style.productTitle}>NewJeans Album</h2>
+            <h2 className={style.productTitle}>{title}</h2>
 
             <div className={style.productRating}>
-              <p>4.2</p>
+              <p>{rating.rate}</p>
               <Star fill="yellow" size={20} />
             </div>
           </div>
 
-          <p className={style.productPrice}>lorem ipsum</p>
+          <p className={style.productPrice}>${price}</p>
         </div>
 
         <div className={style.itemCount}>

@@ -10,13 +10,25 @@
   gap: 1.25rem;
 }
 
+.imageBg {
+  background-color: #e4e4e4;
+  padding: 3rem;
+}
+
+.productImage {
+  height: 400px;
+  object-fit: contain;
+}
+
 .productDetails {
   display: flex;
   flex-direction: column;
 }
 
 .productHeading {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 50px;
+  gap: .75rem;
   justify-content: space-between;
 }
 
@@ -25,6 +37,9 @@
   text-transform: uppercase;
   font-family: "Anton", sans-serif;
   font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .productPrice {
@@ -39,7 +54,6 @@
 
 .itemCount {
   display: flex;
-  /* grid-template-columns: auto 1fr auto; */
   gap: 1rem;
 }
 
