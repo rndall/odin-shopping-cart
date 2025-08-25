@@ -11,15 +11,22 @@ export default function ProductsGridItem() {
         <img src="https://placecats.com/300/400" />
 
         <div className={style.productDetails}>
-          <div>
+          <div className={style.productHeading}>
             <h2 className={style.productTitle}>NewJeans Album</h2>
-            <p className={style.productPrice}>lorem ipsum</p>
+
+            <div className={style.productRating}>
+              <p>4.2</p>
+              <Star fill="yellow" size={20} />
+            </div>
           </div>
 
-          <div className={style.productRating}>
-            <p>4.2</p>
-            <Star fill="yellow" />
-          </div>
+          <p className={style.productPrice}>lorem ipsum</p>
+        </div>
+
+        <div className={style.itemCount}>
+          <Button size="xs" pill={false}>-</Button>
+          <input type="number" defaultValue={1} />
+          <Button size="xs" pill={false}>+</Button>
         </div>
 
         <Button size="sm" fullWidth>Add to Cart</Button>

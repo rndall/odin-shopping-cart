@@ -5,6 +5,10 @@
   justify-items: center;
 }
 
+.grid>* {
+  max-width: 335px;
+}
+
 @media (width >=64rem) {
   .grid {
     grid-template-columns: repeat(3, 1fr);

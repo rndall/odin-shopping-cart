@@ -8,18 +8,23 @@
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  align-items: baseline;
 }
 
 .productDetails {
   display: flex;
   flex-direction: column;
-  gap: .375rem;
+}
+
+.productHeading {
+  display: flex;
+  justify-content: space-between;
 }
 
 .productTitle {
   font-size: 1.25rem;
   text-transform: uppercase;
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
 }
 
 .productPrice {
@@ -30,4 +35,28 @@
   display: flex;
   gap: .25rem;
   align-items: center;
+}
+
+.itemCount {
+  display: flex;
+  /* grid-template-columns: auto 1fr auto; */
+  gap: 1rem;
+}
+
+.itemCount>button {
+  min-width: 1.875rem;
+}
+
+.itemCount>input {
+  border: none;
+  border-radius: .75rem;
+  padding-inline: .75rem;
+  width: 100%;
+  text-align: center;
+}
+
+.productRating {
+  display: flex;
+  gap: .25rem;
+  font-size: .875rem;
 }
