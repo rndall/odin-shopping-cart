@@ -1,4 +1,4 @@
-import style from "./ItemCount.module.css"
+import styles from "./ItemCount.module.css"
 
 import Button from "../../../../components/ui/Button/Button"
 
@@ -9,7 +9,7 @@ interface ItemCountProps {
 
 export default function ItemCount({ quantity, setQuantity }: ItemCountProps) {
   return (
-    <div className={style.itemCount}>
+    <div className={styles.itemCount}>
       <Button size="xs" pill={false} onClick={() => setQuantity(Math.max(1, quantity - 1))}>-</Button>
       <input type="number" name="itemCount" value={quantity} min={1} onChange={({ target }) => {
         const newValue = Math.max(1, Number(target.value))
