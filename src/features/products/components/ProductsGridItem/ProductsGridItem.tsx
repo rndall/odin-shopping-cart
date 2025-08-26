@@ -3,11 +3,25 @@ import style from "./ProductsGridItem.module.css"
 import { Star } from "lucide-react"
 
 import Button from "../../../../components/ui/Button/Button"
+import ItemCount from "../ItemCount/ItemCount"
 
 import type { Product } from "../../types"
 
+import { useState } from "react"
+
 export default function ProductsGridItem({ product }: { product: Product }) {
   const { image, title, rating, price } = product
+
+  const [itemQuantity, setItemQuantity] = useState(1)
+
+  const handleQuantityChange = (value: number) => setItemQuantity(value)
+
+  const handleAddToCart = () => {
+    // Put items in cart
+    //
+
+    setItemQuantity(1)
+  }
 
   return (
     <div className={style.product}>
@@ -29,13 +43,9 @@ export default function ProductsGridItem({ product }: { product: Product }) {
           <p className={style.productPrice}>${price}</p>
         </div>
 
-        <div className={style.itemCount}>
-          <Button size="xs" pill={false}>-</Button>
-          <input type="number" defaultValue={1} />
-          <Button size="xs" pill={false}>+</Button>
-        </div>
+        <ItemCount quantity={itemQuantity} setQuantity={handleQuantityChange} />
 
-        <Button size="sm" fullWidth>Add to Cart</Button>
+        <Button onClick={handleAddToCart} size="sm" fullWidth>Add to Cart</Button>
       </div>
     </div>
   )

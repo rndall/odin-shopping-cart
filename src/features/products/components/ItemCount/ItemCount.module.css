@@ -1,0 +1,16 @@
+.itemCount {
+  display: flex;
+  gap: 1rem;
+}
+
+.itemCount>button {
+  min-width: 1.875rem;
+}
+
+.itemCount>input {
+  border: none;
+  border-radius: .75rem;
+  padding-inline: .75rem;
+  width: 100%;
+  text-align: center;
+}
