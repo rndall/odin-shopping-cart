@@ -11,4 +11,11 @@ interface Product {
   }
 }
 
-export type { Product }
+interface CartItem {
+  item: Product;
+  quantity: number;
+}
+
+type handleAddToCartFn = (item: CartItem) => void
+
+export type { Product, CartItem, handleAddToCartFn }

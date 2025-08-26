@@ -3,13 +3,15 @@ import style from "./ProductsCollection.module.css"
 
 import ProductsGrid from "../ProductsGrid/ProductsGrid"
 
-export default function ProductsCollection() {
+import type { handleAddToCartFn } from "../../types"
+
+export default function ProductsCollection({ handleAddToCart }: { handleAddToCart: handleAddToCartFn }) {
   return (
     <section className={style.collection}>
       <div className={`${style.collectionContainer} container`}>
         <h1 className={style.heading}>All Products</h1>
 
-        <ProductsGrid />
+        <ProductsGrid handleAddToCart={handleAddToCart} />
       </div>
     </section>
   )

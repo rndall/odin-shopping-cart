@@ -5,20 +5,24 @@ import { Star } from "lucide-react"
 import Button from "../../../../components/ui/Button/Button"
 import ItemCount from "../ItemCount/ItemCount"
 
-import type { Product } from "../../types"
+import type { Product, handleAddToCartFn } from "../../types"
 
 import { useState } from "react"
 
-export default function ProductsGridItem({ product }: { product: Product }) {
+interface ProductsGridItemProps {
+  product: Product;
+  handleAddToCart: handleAddToCartFn;
+}
+
+export default function ProductsGridItem({ product, handleAddToCart }: ProductsGridItemProps) {
   const { image, title, rating, price } = product
 
   const [itemQuantity, setItemQuantity] = useState(1)
 
   const handleQuantityChange = (value: number) => setItemQuantity(value)
 
-  const handleAddToCart = () => {
-    // Put items in cart
-    //
+  const onAddToCartClick = () => {
+    handleAddToCart({ item: product, quantity: itemQuantity })
 
     setItemQuantity(1)
   }
@@ -45,7 +49,7 @@ export default function ProductsGridItem({ product }: { product: Product }) {
 
         <ItemCount quantity={itemQuantity} setQuantity={handleQuantityChange} />
 
-        <Button onClick={handleAddToCart} size="sm" fullWidth>Add to Cart</Button>
+        <Button onClick={onAddToCartClick} size="sm" fullWidth>Add to Cart</Button>
       </div>
     </div>
   )

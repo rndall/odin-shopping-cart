@@ -4,7 +4,11 @@ import styles from "./Navbar.module.css"
 
 import { ShoppingCart } from "lucide-react";
 
-export default function Navbar() {
+interface NavbarProps {
+  cartItemCount: number;
+}
+
+export default function Navbar({ cartItemCount }: NavbarProps) {
   const location = useLocation();
 
   return (
@@ -22,7 +26,12 @@ export default function Navbar() {
         </nav>
         {
           location.pathname.includes("shop") &&
-          <NavLink to="shop/cart" className={styles.cartLink}><ShoppingCart size={20} /></NavLink>
+          <NavLink to="shop/cart" className={styles.cartLink}>
+            <div className={styles.cartContainer}>
+              <ShoppingCart size={20} />
+              {cartItemCount > 0 && <div className={styles.cartItems}><p>{cartItemCount}</p></div>}
+            </div>
+          </NavLink>
         }
       </div>
     </header >

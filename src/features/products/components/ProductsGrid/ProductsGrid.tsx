@@ -3,12 +3,12 @@ import styles from "./ProductsGrid.module.css"
 import { useEffect, useState } from "react";
 
 import { getProducts } from "../../api/productsApi";
-import type { Product } from "../../types";
+import type { Product, handleAddToCartFn } from "../../types";
 
 import StatusHandler from "../../../../components/StatusHandler/StatusHandler";
 import ProductsGridItem from "../ProductsGridItem/ProductsGridItem"
 
-export default function ProductsGrid() {
+export default function ProductsGrid({ handleAddToCart }: { handleAddToCart: handleAddToCartFn }) {
   const [products, setProducts] = useState<Product[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -35,7 +35,7 @@ export default function ProductsGrid() {
 
   return (
     <div className={styles.grid}>
-      {products.map((product) => <ProductsGridItem key={product.id} product={product} />)}
+      {products.map((product) => <ProductsGridItem key={product.id} product={product} handleAddToCart={handleAddToCart} />)}
     </div>
   )
 }
