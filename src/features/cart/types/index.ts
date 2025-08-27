@@ -1,10 +1,10 @@
-import type { Product } from "../../products/types"
+import type { Product } from "../../products/types";
 
 interface CartItem {
-  item: Product
-  quantity: number
+  item: Product;
+  quantity: number;
 }
 
-type handleAddToCartFn = (item: CartItem) => void
+type HandleAddToCartFn = (item: CartItem) => void;
 
-export type { CartItem, handleAddToCartFn }
+export type { CartItem, HandleAddToCartFn };

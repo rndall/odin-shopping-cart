@@ -2,12 +2,12 @@ import style from "./ProductsCollection.module.css";
 
 import ProductsGrid from "../ProductsGrid/ProductsGrid";
 
-import type { handleAddToCartFn } from "../../../cart/types";
+import type { HandleAddToCartFn } from "../../../cart/types";
 
 export default function ProductsCollection({
   handleAddToCart,
 }: {
-  handleAddToCart: handleAddToCartFn;
+  handleAddToCart: HandleAddToCartFn;
 }) {
   return (
     <section className={style.collection}>

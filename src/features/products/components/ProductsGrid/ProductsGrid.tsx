@@ -1,6 +1,6 @@
 import styles from "./ProductsGrid.module.css";
 
-import type { handleAddToCartFn } from "../../../cart/types";
+import type { HandleAddToCartFn } from "../../../cart/types";
 
 import StatusHandler from "../../../../components/StatusHandler/StatusHandler";
 import ProductsGridItem from "../ProductsGridItem/ProductsGridItem";
@@ -10,7 +10,7 @@ import { useProducts } from "../../api/productsApi";
 export default function ProductsGrid({
   handleAddToCart,
 }: {
-  handleAddToCart: handleAddToCartFn;
+  handleAddToCart: HandleAddToCartFn;
 }) {
   const { products, loading, error } = useProducts();
 

@@ -6,13 +6,13 @@ import Button from "../../../../components/ui/Button/Button";
 import ItemCount from "../ItemCount/ItemCount";
 
 import type { Product } from "../../types";
-import type { handleAddToCartFn } from "../../../cart/types";
+import type { HandleAddToCartFn } from "../../../cart/types";
 
 import { useState } from "react";
 
 interface ProductsGridItemProps {
   product: Product;
-  handleAddToCart: handleAddToCartFn;
+  handleAddToCart: HandleAddToCartFn;
 }
 
 export default function ProductsGridItem({
