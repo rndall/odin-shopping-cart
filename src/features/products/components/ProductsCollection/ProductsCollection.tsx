@@ -1,11 +1,14 @@
+import style from "./ProductsCollection.module.css";
 
-import style from "./ProductsCollection.module.css"
+import ProductsGrid from "../ProductsGrid/ProductsGrid";
 
-import ProductsGrid from "../ProductsGrid/ProductsGrid"
+import type { handleAddToCartFn } from "../../../cart/types";
 
-import type { handleAddToCartFn } from "../../types"
-
-export default function ProductsCollection({ handleAddToCart }: { handleAddToCart: handleAddToCartFn }) {
+export default function ProductsCollection({
+  handleAddToCart,
+}: {
+  handleAddToCart: handleAddToCartFn;
+}) {
   return (
     <section className={style.collection}>
       <div className={`${style.collectionContainer} container`}>
@@ -14,6 +17,5 @@ export default function ProductsCollection({ handleAddToCart }: { handleAddToCar
         <ProductsGrid handleAddToCart={handleAddToCart} />
       </div>
     </section>
-  )
+  );
 }
-

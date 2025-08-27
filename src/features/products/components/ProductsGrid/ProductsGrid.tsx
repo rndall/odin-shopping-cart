@@ -1,42 +1,54 @@
-import styles from "./ProductsGrid.module.css"
+import styles from "./ProductsGrid.module.css";
 
 import { useEffect, useState } from "react";
 
 import { getProducts } from "../../api/productsApi";
-import type { Product, handleAddToCartFn } from "../../types";
+
+import type { Product } from "../../types";
+import type { handleAddToCartFn } from "../../../cart/types";
 
 import StatusHandler from "../../../../components/StatusHandler/StatusHandler";
-import ProductsGridItem from "../ProductsGridItem/ProductsGridItem"
+import ProductsGridItem from "../ProductsGridItem/ProductsGridItem";
 
-export default function ProductsGrid({ handleAddToCart }: { handleAddToCart: handleAddToCartFn }) {
-  const [products, setProducts] = useState<Product[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+export default function ProductsGrid({
+  handleAddToCart,
+}: {
+  handleAddToCart: handleAddToCartFn;
+}) {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const data = await getProducts("https://fakestoreapi.com/products")
-        setProducts(data)
-        setError(null)
+        const data = await getProducts("https://fakestoreapi.com/products");
+        setProducts(data);
+        setError(null);
       } catch (err) {
-        if (!(err instanceof Error)) return
-        setError(err.message)
-        setProducts([])
+        if (!(err instanceof Error)) return;
+        setError(err.message);
+        setProducts([]);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
+    };
 
-    fetchProducts()
-  }, [])
+    fetchProducts();
+  }, []);
 
-  if (loading || error) return <StatusHandler loading={loading} error={error ?? ""} />
+  if (loading || error)
+    return <StatusHandler loading={loading} error={error ?? ""} />;
 
   return (
     <div className={styles.grid}>
-      {products.map((product) => <ProductsGridItem key={product.id} product={product} handleAddToCart={handleAddToCart} />)}
+      {products.map((product) => (
+        <ProductsGridItem
+          key={product.id}
+          product={product}
+          handleAddToCart={handleAddToCart}
+        />
+      ))}
     </div>
-  )
+  );
 }
-
