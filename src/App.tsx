@@ -1,19 +1,18 @@
 import "./App.css"
 
-import { Outlet } from "react-router";
+import { Outlet } from "react-router"
 
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "./components/Navbar/Navbar"
 
-import type { CartItem } from "./features/products/types";
+import type { CartItem } from "./features/cart/types"
 
-import { useState } from "react";
+import { useState } from "react"
 
 function App() {
   const [cart, setCart] = useState<CartItem[]>([])
 
   const handleAddToCart = ({ item, quantity }: CartItem) => {
-    const productIndex =
-      cart.findIndex((ci) => ci.item.id === item.id)
+    const productIndex = cart.findIndex((ci) => ci.item.id === item.id)
 
     if (productIndex === -1) {
       setCart([...cart, { item, quantity }])
@@ -33,10 +32,10 @@ function App() {
       <Navbar cartItemCount={cartItemCount} />
 
       <main className="main">
-        <Outlet context={{ handleAddToCart }} />
+        <Outlet context={{ handleAddToCart, cart }} />
       </main>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

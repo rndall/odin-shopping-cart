@@ -8,14 +8,7 @@ interface Product {
   rating: {
     rate: number;
     count: number;
-  }
+  };
 }
 
-interface CartItem {
-  item: Product;
-  quantity: number;
-}
-
-type handleAddToCartFn = (item: CartItem) => void
-
-export type { Product, CartItem, handleAddToCartFn }
+export type { Product };
