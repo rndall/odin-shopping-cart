@@ -1,7 +1,7 @@
 .btn {
   background-color: var(--primary-color);
   color: white;
-  border-radius: .75rem;
+  border-radius: 0.75rem;
   font-weight: 700;
   padding: 1rem 2rem;
   cursor: pointer;
@@ -17,12 +17,17 @@
 
 .sm {
   composes: btn;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
 }
 
 .xs {
   composes: btn;
-  padding: .25rem .5rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.lg {
+  composes: btn;
+  padding: 1rem 3.125rem;
 }
 
 .fullWidth {
