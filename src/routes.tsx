@@ -9,9 +9,11 @@ const routes = [
     children: [
       { index: true, Component: Home },
       {
-        path: "shop", children: [
+        path: "shop",
+        children: [
           { index: true, Component: Shop },
-          { path: 'cart', Component: ShoppingCart }]
+          { path: "cart", Component: ShoppingCart },
+        ],
       },
     ],
   },
