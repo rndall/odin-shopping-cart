@@ -1,0 +1,52 @@
+.tableData {
+  composes: tableGrid from "../CartTable/CartTable.module.css";
+  gap: 0.875rem;
+}
+
+.productDetails {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.productImage {
+  background-color: #e4e4e4;
+  max-width: 86px;
+  aspect-ratio: 3 / 4;
+  object-fit: contain;
+  padding: 1rem;
+}
+
+.productTitle {
+  font-family: Anton, sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.productCount {
+  padding-inline-end: 0.875rem;
+}
+
+.productRemove {
+  width: 32px;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  opacity: 0.4;
+  background-color: transparent;
+  transition: opacity 200ms;
+}
+
+.productRemove:hover {
+  opacity: 1;
+}
+
+@media (width >= 40rem) {
+  .productDetails {
+    gap: 2rem;
+  }
+
+  .productImage {
+    max-width: 88px;
+  }
+}

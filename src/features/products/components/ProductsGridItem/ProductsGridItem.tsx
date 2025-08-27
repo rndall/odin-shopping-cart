@@ -48,7 +48,7 @@ export default function ProductsGridItem({
             </div>
           </div>
 
-          <p className={styles.productPrice}>${price}</p>
+          <p className={styles.productPrice}>${price.toFixed(2)}</p>
         </div>
 
         <ItemCount quantity={itemQuantity} setQuantity={handleQuantityChange} />

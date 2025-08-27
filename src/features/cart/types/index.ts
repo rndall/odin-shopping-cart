@@ -6,5 +6,18 @@ interface CartItem {
 }
 
 type HandleAddToCartFn = (item: CartItem) => void;
+type HandleAdjustItemQuantityFn = ({
+  itemId,
+  quantity,
+}: {
+  itemId: number;
+  quantity: number;
+}) => void;
+type HandleRemoveItemFn = (itemId: number) => void;
 
-export type { CartItem, HandleAddToCartFn };
+export type {
+  CartItem,
+  HandleAddToCartFn,
+  HandleAdjustItemQuantityFn,
+  HandleRemoveItemFn,
+};

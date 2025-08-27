@@ -1,19 +1,18 @@
-import styles from "./Cart.module.css"
+import styles from "./Cart.module.css";
 
-import EmptyCart from "../EmptyCart/EmptyCart"
+import type { CartProps } from "../../types/props";
 
-import type { CartItem } from "../../types"
+import CartCheckOut from "../CartCheckOut/CartCheckOut";
+import EmptyCart from "../EmptyCart/EmptyCart";
 
-interface CartProps {
-  cart: CartItem[]
-}
+export default function Cart(props: CartProps) {
+  const { cart } = props;
 
-export default function Cart({ cart }: CartProps) {
   return (
     <section className={styles.section}>
       <div className={`container`}>
-        {cart.length > 0 ? <>Test</> : <EmptyCart />}
+        {cart.length > 0 ? <CartCheckOut {...props} /> : <EmptyCart />}
       </div>
     </section>
-  )
+  );
 }

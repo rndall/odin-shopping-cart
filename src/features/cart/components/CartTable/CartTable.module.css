@@ -1,0 +1,36 @@
+.tableGrid {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 180px 80px 30px;
+}
+
+.tableHeaders {
+  composes: tableGrid;
+  gap: 1rem;
+}
+
+.tableBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-block: 1.5rem;
+}
+
+th {
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-align: start;
+  padding-block: 1rem;
+}
+
+td {
+  padding: 1rem;
+}
+
+tr:first-child td {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+tr:last-child td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
