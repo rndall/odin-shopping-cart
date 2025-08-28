@@ -1,5 +1,50 @@
 import styles from "./CheckOutFooter.module.css";
 
-export default function CheckOutFooter() {
-  return <div></div>;
+import { useNavigate, Link } from "react-router";
+
+import Button from "../../../../components/ui/Button/Button";
+
+import { useState } from "react";
+
+interface CheckOutFooterProps {
+  subtotal: string;
+}
+
+export default function CheckOutFooter({ subtotal }: CheckOutFooterProps) {
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleCheckout = async () => {
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+      navigate("/checkout-success");
+    }, 2000);
+  };
+
+  return (
+    <div className={styles.footer}>
+      <div className={styles.footerSubtotal}>
+        <div className={styles.subtotal}>
+          <p>Subtotal</p>
+          <p>${subtotal}</p>
+        </div>
+
+        <div>
+          <Button onClick={handleCheckout} isLoading={isLoading} fullWidth>
+            Checkout
+          </Button>
+        </div>
+      </div>
+
+      <div className={styles.backToShoppingBtn}>
+        <Link to="/shop">
+          <Button fullWidth variant="outlined">
+            Back to Shopping
+          </Button>
+        </Link>
+      </div>
+    </div>
+  );
 }

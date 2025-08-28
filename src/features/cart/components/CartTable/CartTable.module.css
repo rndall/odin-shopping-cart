@@ -8,7 +8,7 @@
   grid-template-columns: 1fr 180px 80px 30px;
   gap: 1rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding-block: 0.5rem;
+  padding-block: 1rem;
   font-size: 0.875rem;
 }
 
@@ -28,6 +28,10 @@
 }
 
 @media (width >= 40rem) {
+  .table {
+    margin-block-start: 2.25rem;
+  }
+
   .tableHeaders > * {
     display: block;
   }
