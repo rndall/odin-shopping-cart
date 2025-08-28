@@ -4,6 +4,8 @@ import Shop from "./routes/Shop";
 import ShoppingCart from "./features/cart/routes/ShoppingCart";
 import CheckoutSuccess from "./routes/CheckoutSuccess/CheckoutSuccess";
 
+import { getProducts } from "./features/products/api/productsApi";
+
 const routes = [
   {
     Component: App,
@@ -12,7 +14,13 @@ const routes = [
       {
         path: "shop",
         children: [
-          { index: true, Component: Shop },
+          {
+            index: true,
+            Component: Shop,
+            loader: async () => {
+              return await getProducts();
+            },
+          },
           { path: "cart", Component: ShoppingCart },
         ],
       },
