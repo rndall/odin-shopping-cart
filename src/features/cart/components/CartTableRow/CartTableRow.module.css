@@ -1,20 +1,27 @@
 .tableData {
-  composes: tableGrid from "../CartTable/CartTable.module.css";
-  gap: 0.875rem;
+  display: grid;
+  grid-template-columns: 104px auto 30px;
+  align-items: center;
+  gap: 22px;
 }
 
 .productDetails {
-  display: flex;
-  gap: 1rem;
+  display: grid;
   align-items: center;
+  gap: 0.5rem;
+}
+
+.productImageContainer {
+  background-color: #e4e4e4;
+  display: flex;
+  align-items: center;
+  max-width: 104px;
+  aspect-ratio: 3 / 4;
+  padding: 0.75rem;
 }
 
 .productImage {
-  background-color: #e4e4e4;
-  max-width: 86px;
-  aspect-ratio: 3 / 4;
   object-fit: contain;
-  padding: 1rem;
 }
 
 .productTitle {
@@ -22,14 +29,15 @@
   font-weight: 400;
   text-transform: uppercase;
   font-size: 1rem;
+  flex: auto;
 }
 
 .productCount {
-  padding-inline-end: 0.875rem;
+  max-width: 200px;
 }
 
 .productRemove {
-  width: 32px;
+  max-width: 30px;
   aspect-ratio: 1 / 1;
   cursor: pointer;
   opacity: 0.4;
@@ -42,11 +50,24 @@
 }
 
 @media (width >= 40rem) {
+  .tableData {
+    grid-template-columns: 88px 1fr 30px;
+    gap: 15px;
+  }
   .productDetails {
-    gap: 2rem;
+    grid-template-columns: 1fr 180px 80px;
+    gap: 15px;
   }
 
-  .productImage {
+  .productImageContainer {
     max-width: 88px;
+  }
+
+  .productTitle {
+    margin-inline-start: 15px;
+  }
+
+  .productPrice {
+    order: 1;
   }
 }

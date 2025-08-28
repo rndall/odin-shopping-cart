@@ -8,6 +8,7 @@
 }
 
 .heading {
+  text-align: center;
   font-family: Anton, sans-serif;
   font-weight: 400;
   text-transform: uppercase;

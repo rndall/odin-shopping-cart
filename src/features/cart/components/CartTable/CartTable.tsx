@@ -11,8 +11,10 @@ export default function CartTable(props: CartTableProps) {
   return (
     <div className={styles.table}>
       <div className={styles.tableHeaders}>
-        {tableHeaders.map((th) => (
-          <div key={th}>{th}</div>
+        {tableHeaders.map((th, i) => (
+          <div className={i === 0 ? styles.headerXs : ""} key={th}>
+            {th}
+          </div>
         ))}
       </div>
 

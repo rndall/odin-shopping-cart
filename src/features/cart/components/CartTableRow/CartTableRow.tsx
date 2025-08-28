@@ -29,16 +29,25 @@ export default function CartTableRow({
 
   return (
     <div className={styles.tableData} key={item.id}>
-      <div className={styles.productDetails}>
+      <div className={styles.productImageContainer}>
         <img className={styles.productImage} src={item.image} />
+      </div>
+
+      <div className={styles.productDetails}>
         <h2 className={styles.productTitle}>{item.title}</h2>
-      </div>
 
-      <div className={styles.productCount}>
-        <ItemCount quantity={quantity} setQuantity={handleQuantityChange} />
-      </div>
+        <div className={styles.productPrice}>
+          ${(item.price * quantity).toFixed(2)}
+        </div>
 
-      <div>${(item.price * quantity).toFixed(2)}</div>
+        <div className={styles.productCount}>
+          <ItemCount
+            quantity={quantity}
+            setQuantity={handleQuantityChange}
+            inputOnlySm
+          />
+        </div>
+      </div>
 
       <button
         className={styles.productRemove}
