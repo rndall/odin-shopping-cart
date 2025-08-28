@@ -3,8 +3,9 @@ import Home from "./routes/Home";
 import Shop from "./routes/Shop";
 import ShoppingCart from "./features/cart/routes/ShoppingCart";
 import CheckoutSuccess from "./routes/CheckoutSuccess/CheckoutSuccess";
+import Product from "./features/products/routes/Product";
 
-import { getProducts } from "./features/products/api/productsApi";
+import { getProducts, getProduct } from "./features/products/api/productsApi";
 
 const routes = [
   {
@@ -23,6 +24,14 @@ const routes = [
           },
           { path: "cart", Component: ShoppingCart },
         ],
+      },
+      {
+        path: "products/:productId",
+        Component: Product,
+        loader: async ({ params }: { params: { productId: string } }) => {
+          const { productId } = params;
+          return await getProduct(productId);
+        },
       },
     ],
   },

@@ -1,5 +1,7 @@
 import styles from "./ProductsGridItem.module.css";
 
+import { Link } from "react-router";
+
 import { Star } from "lucide-react";
 
 import Button from "../../../../components/ui/Button/Button";
@@ -33,30 +35,35 @@ export default function ProductsGridItem({
 
   return (
     <div className={styles.product}>
-      <div className={styles.productContainer}>
-        <div className={styles.imageBg}>
-          <img className={styles.productImage} src={image} />
-        </div>
-
-        <div className={styles.productDetails}>
-          <div className={styles.productHeading}>
-            <h2 className={styles.productTitle}>{title}</h2>
-
-            <div className={styles.productRating}>
-              <p>{rating.rate}</p>
-              <Star fill="yellow" size={20} />
-            </div>
+      <Link to={`/products/${product.id}`}>
+        <div className={styles.productContainer}>
+          <div className={styles.imageBg}>
+            <img className={styles.productImage} src={image} />
           </div>
 
-          <p className={styles.productPrice}>${price.toFixed(2)}</p>
+          <div className={styles.productDetails}>
+            <div className={styles.productHeading}>
+              <h2 className={styles.productTitle}>{title}</h2>
+
+              <div className={styles.productRating}>
+                <p>{rating.rate}</p>
+                <Star fill="yellow" size={20} />
+              </div>
+            </div>
+
+            <p className={styles.productPrice}>${price.toFixed(2)}</p>
+          </div>
+
+          <ItemCount
+            quantity={itemQuantity}
+            setQuantity={handleQuantityChange}
+          />
+
+          <Button onClick={onAddToCartClick} size="sm" fullWidth>
+            Add to Cart
+          </Button>
         </div>
-
-        <ItemCount quantity={itemQuantity} setQuantity={handleQuantityChange} />
-
-        <Button onClick={onAddToCartClick} size="sm" fullWidth>
-          Add to Cart
-        </Button>
-      </div>
+      </Link>
     </div>
   );
 }
