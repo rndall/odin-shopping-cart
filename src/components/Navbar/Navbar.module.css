@@ -35,10 +35,9 @@
 
 .cartItems {
   position: absolute;
-  padding-block-start: 1px;
   top: -38%;
   right: -63%;
-  background-color: red;
+  background-color: var(--primary-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,7 +46,7 @@
   aspect-ratio: 1 / 1;
   color: white;
   font-weight: bold;
-  font-size: .675rem;
+  font-size: 0.675rem;
 }
 
 @media (width >=40rem) {
@@ -63,7 +62,7 @@
     min-width: 21px;
     top: -50%;
     right: -75%;
-    font-size: .75rem;
+    font-size: 0.75rem;
   }
 }
 
