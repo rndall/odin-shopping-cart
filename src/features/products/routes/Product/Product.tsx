@@ -25,7 +25,6 @@ export default function Product() {
   const addToCartBtnRef = useRef<HTMLButtonElement>(null);
 
   const isAddToCardBtnVisible = useIsVisible(addToCartBtnRef);
-  console.log({ addToCartBtnRef, isAddToCardBtnVisible });
 
   const onAddToCartClick = () => {
     handleAddToCart({ item: product, quantity: itemQuantity });
