@@ -1,6 +1,6 @@
-import { NavLink, useLocation } from "react-router"
+import styles from "./Navbar.module.css";
 
-import styles from "./Navbar.module.css"
+import { NavLink, useLocation } from "react-router";
 
 import { ShoppingCart } from "lucide-react";
 
@@ -13,28 +13,37 @@ export default function Navbar({ cartItemCount }: NavbarProps) {
 
   return (
     <header className={styles.header}>
-      <div className={`${styles.navContainer}`} style={{ position: "relative" }}>
+      <div
+        className={`${styles.navContainer}`}
+        style={{ position: "relative" }}
+      >
         <nav>
           <ul className={styles.navList}>
             <li>
-              <NavLink to="/" className={styles.navLink}>Home</NavLink>
+              <NavLink to="/" className={styles.navLink}>
+                Home
+              </NavLink>
             </li>
             <li>
-              <NavLink to="shop" className={styles.navLink}>Shop</NavLink>
+              <NavLink to="shop" className={styles.navLink}>
+                Shop
+              </NavLink>
             </li>
           </ul>
         </nav>
-        {
-          location.pathname.includes("shop") &&
+        {location.pathname.includes("shop") && (
           <NavLink to="shop/cart" className={styles.cartLink}>
             <div className={styles.cartContainer}>
               <ShoppingCart size={20} />
-              {cartItemCount > 0 && <div className={styles.cartItems}><p>{cartItemCount}</p></div>}
+              {cartItemCount > 0 && (
+                <div className={styles.cartItems}>
+                  <p>{cartItemCount}</p>
+                </div>
+              )}
             </div>
           </NavLink>
-        }
+        )}
       </div>
-    </header >
-  )
+    </header>
+  );
 }
-

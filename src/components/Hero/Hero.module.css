@@ -10,7 +10,7 @@
   position: relative;
 }
 
-.heroContainer *+* {
+.heroContainer * + * {
   margin-top: 24px;
 }
 
@@ -48,6 +48,7 @@
   position: absolute;
   transition: ease 600ms all;
   transition-duration: 1s;
+  z-index: 20;
 }
 
 .collageImage1 {
