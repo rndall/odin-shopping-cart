@@ -1,6 +1,7 @@
 .heroSection {
   display: grid;
   align-items: center;
+  padding-block: 1rem;
 }
 
 .heroContainer {
