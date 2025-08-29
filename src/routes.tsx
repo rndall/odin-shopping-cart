@@ -3,7 +3,7 @@ import Home from "./routes/Home";
 import Shop from "./routes/Shop";
 import ShoppingCart from "./features/cart/routes/ShoppingCart";
 import CheckoutSuccess from "./routes/CheckoutSuccess/CheckoutSuccess";
-import Product from "./features/products/routes/Product";
+import Product from "./features/products/routes/Product/Product";
 
 import { getProducts, getProduct } from "./features/products/api/productsApi";
 
