@@ -24,7 +24,6 @@ export default function Navbar({ cartItemCount }: NavbarProps) {
 
   const showShoppingCartIcon = () => {
     const { pathname } = location;
-
     return pathname.includes("shop") || pathname.includes("products");
   };
 
@@ -38,7 +37,11 @@ export default function Navbar({ cartItemCount }: NavbarProps) {
           <ul className={styles.navList}>
             {navLinks.map(({ name, route }, index) => (
               <li key={index}>
-                <NavLink to={route} className={styles.navLink}>
+                <NavLink
+                  preventScrollReset
+                  to={route}
+                  className={styles.navLink}
+                >
                   {name}
                 </NavLink>
               </li>
@@ -46,7 +49,11 @@ export default function Navbar({ cartItemCount }: NavbarProps) {
           </ul>
         </nav>
         {showShoppingCartIcon() && (
-          <NavLink to="shop/cart" className={styles.cartLink}>
+          <NavLink
+            preventScrollReset
+            to="shop/cart"
+            className={styles.cartLink}
+          >
             <div className={styles.cartContainer}>
               <ShoppingCart size={20} />
               {cartItemCount > 0 && (

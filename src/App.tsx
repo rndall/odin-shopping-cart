@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { Outlet } from "react-router";
+import { Outlet, ScrollRestoration } from "react-router";
 
 import Navbar from "./components/Navbar/Navbar";
 
@@ -59,6 +59,11 @@ function App() {
             handleRemoveItem,
             cart,
             cartItemCount,
+          }}
+        />
+        <ScrollRestoration
+          getKey={(location, _matches) => {
+            return location.pathname;
           }}
         />
       </main>
