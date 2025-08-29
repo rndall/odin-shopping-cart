@@ -1,15 +1,17 @@
 import styles from "./Button.module.css";
 
+import type { ButtonHTMLAttributes, Ref } from "react";
+
 import { LoaderCircle } from "lucide-react";
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   fullWidth?: boolean;
   variant?: "outlined" | "default";
   size?: "xs" | "sm" | "default" | "lg";
   pill?: boolean;
   isLoading?: boolean;
   children?: React.ReactNode;
-  onClick?: () => void;
+  ref?: Ref<HTMLButtonElement>;
 }
 
 export default function Button({
@@ -19,7 +21,7 @@ export default function Button({
   children,
   pill = true,
   isLoading,
-  onClick,
+  ...rest
 }: ButtonProps) {
   const buttonSize = size === "default" ? styles.btn : styles[size];
   const fullWidthClass = fullWidth ? styles.fullWidth : "";
@@ -28,8 +30,8 @@ export default function Button({
 
   return (
     <button
+      {...rest}
       className={`${fullWidthClass} ${buttonSize} ${pillClass} ${variantClass}`}
-      onClick={onClick}
     >
       {isLoading ? <LoaderCircle className={styles.loader} /> : children}
     </button>
