@@ -11,6 +11,12 @@ interface NavbarProps {
 export default function Navbar({ cartItemCount }: NavbarProps) {
   const location = useLocation();
 
+  const showShoppingCartIcon = () => {
+    const { pathname } = location;
+
+    return pathname.includes("shop") || pathname.includes("products");
+  };
+
   return (
     <header className={styles.header}>
       <div
@@ -31,7 +37,7 @@ export default function Navbar({ cartItemCount }: NavbarProps) {
             </li>
           </ul>
         </nav>
-        {location.pathname.includes("shop") && (
+        {showShoppingCartIcon() && (
           <NavLink to="shop/cart" className={styles.cartLink}>
             <div className={styles.cartContainer}>
               <ShoppingCart size={20} />
