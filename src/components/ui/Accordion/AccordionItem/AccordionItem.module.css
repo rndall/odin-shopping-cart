@@ -1,0 +1,42 @@
+.accordionItem {
+  /* transition: 4s; */
+}
+
+.triggerButton {
+  background-color: transparent;
+  min-width: 100%;
+  cursor: pointer;
+  padding-inline: 0;
+}
+
+.triggerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 1.5rem;
+}
+
+.trigger {
+  font-family: Anton, sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.contentContainer {
+  display: grid;
+  overflow: hidden;
+  grid-template-rows: 0fr;
+  transition: 0.2s ease-out;
+}
+
+.contentVisible {
+  grid-template-rows: 1fr;
+}
+
+.contentOuter {
+  min-height: 0;
+}
+
+.content {
+  padding-block-end: 1rem;
+}
