@@ -35,8 +35,8 @@ export default function ProductsGridItem({
 
   return (
     <div className={styles.product}>
-      <Link to={`/products/${product.id}`}>
-        <div className={styles.productContainer}>
+      <div className={styles.productContainer}>
+        <Link to={`/products/${product.id}`} className={styles.itemLink}>
           <div className={styles.imageBg}>
             <img className={styles.productImage} src={image} />
           </div>
@@ -53,17 +53,14 @@ export default function ProductsGridItem({
 
             <p className={styles.productPrice}>${price.toFixed(2)}</p>
           </div>
+        </Link>
 
-          <ItemCount
-            quantity={itemQuantity}
-            setQuantity={handleQuantityChange}
-          />
+        <ItemCount quantity={itemQuantity} setQuantity={handleQuantityChange} />
 
-          <Button onClick={onAddToCartClick} size="sm" fullWidth>
-            Add to Cart
-          </Button>
-        </div>
-      </Link>
+        <Button onClick={onAddToCartClick} size="sm" fullWidth>
+          Add to Cart
+        </Button>
+      </div>
     </div>
   );
 }
