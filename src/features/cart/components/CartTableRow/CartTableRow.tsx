@@ -9,6 +9,7 @@ import type {
 import ItemCount from "../../../products/components/ItemCount/ItemCount";
 
 import { X } from "lucide-react";
+import { Link } from "react-router";
 
 interface CartTableRowProps {
   item: Product;
@@ -29,12 +30,18 @@ export default function CartTableRow({
 
   return (
     <div className={styles.tableData} key={item.id}>
-      <div className={styles.productImageContainer}>
-        <img className={styles.productImage} src={item.image} />
-      </div>
+      <Link to={`/products/${item.id}`}>
+        <div className={styles.productImageContainer}>
+          <img className={styles.productImage} src={item.image} />
+        </div>
+      </Link>
 
       <div className={styles.productDetails}>
-        <h2 className={styles.productTitle}>{item.title}</h2>
+        <div className={styles.titleContainer}>
+          <Link to={`/products/${item.id}`}>
+            <h2 className={styles.productTitle}>{item.title}</h2>
+          </Link>
+        </div>
 
         <div className={styles.productPrice}>
           ${(item.price * quantity).toFixed(2)}

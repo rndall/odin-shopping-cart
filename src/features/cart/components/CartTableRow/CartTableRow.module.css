@@ -24,12 +24,20 @@
   object-fit: contain;
 }
 
+.titleContainer {
+  display: flex;
+}
+
 .productTitle {
   font-family: Anton, sans-serif;
   font-weight: 400;
   text-transform: uppercase;
   font-size: 1rem;
-  flex: auto;
+  transition: 200ms;
+}
+
+.productTitle:hover {
+  color: var(--primary-color);
 }
 
 .productCount {
