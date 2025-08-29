@@ -11,6 +11,17 @@ interface NavbarProps {
 export default function Navbar({ cartItemCount }: NavbarProps) {
   const location = useLocation();
 
+  const navLinks = [
+    {
+      name: "Home",
+      route: "/",
+    },
+    {
+      name: "Shop",
+      route: "shop",
+    },
+  ];
+
   const showShoppingCartIcon = () => {
     const { pathname } = location;
 
@@ -25,16 +36,13 @@ export default function Navbar({ cartItemCount }: NavbarProps) {
       >
         <nav>
           <ul className={styles.navList}>
-            <li>
-              <NavLink to="/" className={styles.navLink}>
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="shop" className={styles.navLink}>
-                Shop
-              </NavLink>
-            </li>
+            {navLinks.map(({ name, route }, index) => (
+              <li key={index}>
+                <NavLink to={route} className={styles.navLink}>
+                  {name}
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </nav>
         {showShoppingCartIcon() && (
