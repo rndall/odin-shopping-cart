@@ -28,6 +28,7 @@
 }
 
 .lgAbove {
+  align-self: flex-start;
   display: none;
 }
 
