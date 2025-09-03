@@ -1,3 +1,5 @@
+import type { LoaderFunctionArgs } from "react-router";
+
 import App from "./App";
 import Home from "./routes/Home";
 import Shop from "./routes/Shop";
@@ -28,8 +30,11 @@ const routes = [
       {
         path: "products/:productId",
         Component: Product,
-        loader: async ({ params }: { params: { productId: string } }) => {
+        loader: async ({ params }: LoaderFunctionArgs) => {
           const { productId } = params;
+
+          if (!productId) return;
+
           return await getProduct(productId);
         },
       },
