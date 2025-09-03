@@ -1,5 +1,5 @@
 .statusHandler {
-  height: 60dvh;
+  height: 80dvh;
   display: grid;
   place-items: center;
 }

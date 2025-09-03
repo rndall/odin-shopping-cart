@@ -1,14 +1,20 @@
-import style from "./StatusHandler.module.css"
+import style from "./StatusHandler.module.css";
 
-export default function StatusHandler({ loading, error }: { loading: boolean, error: string }) {
-  if (!loading && !error) return null
+import Loader from "../ui/Loader/Loader";
 
-  const status = loading ? "Loading..." : error;
+interface StatusHandlerProps {
+  loading?: boolean;
+  error?: string;
+}
+
+export default function StatusHandler({ loading, error }: StatusHandlerProps) {
+  if (!loading && !error) return null;
+
+  const status = loading ? <Loader size={48} /> : error;
 
   return (
     <div className={style.statusHandler}>
       <p>{status}</p>
     </div>
-  )
+  );
 }
-
