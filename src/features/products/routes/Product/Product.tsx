@@ -1,6 +1,6 @@
 import styles from "./Product.module.css";
 
-import { useCart } from "../../hooks/useHandleAddToCart";
+import { useCart } from "../../hooks/useCart";
 import { useLoaderData } from "react-router";
 
 import { Star } from "lucide-react";
