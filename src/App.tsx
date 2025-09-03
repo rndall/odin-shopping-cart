@@ -62,6 +62,7 @@ function App() {
           }}
         />
         <ScrollRestoration
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           getKey={(location, _matches) => {
             return location.pathname;
           }}
