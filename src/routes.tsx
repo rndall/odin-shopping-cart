@@ -6,7 +6,7 @@ import Shop from "./routes/Shop";
 import ShoppingCart from "./features/cart/routes/ShoppingCart";
 import CheckoutSuccess from "./routes/CheckoutSuccess/CheckoutSuccess";
 import Product from "./features/products/routes/Product/Product";
-import StatusHandler from "./components/StatusHandler/StatusHandler";
+import HydrateFallback from "./components/HydrateFallback";
 
 import { getProducts, getProduct } from "./features/products/api/productsApi";
 
@@ -21,7 +21,7 @@ const routes = [
           {
             index: true,
             Component: Shop,
-            HydrateFallback: () => <StatusHandler loading />,
+            HydrateFallback,
             loader: async () => {
               return await getProducts();
             },
@@ -32,7 +32,7 @@ const routes = [
       {
         path: "products/:productId",
         Component: Product,
-        HydrateFallback: () => <StatusHandler loading />,
+        HydrateFallback,
         loader: async ({ params }: LoaderFunctionArgs) => {
           const { productId } = params;
 
