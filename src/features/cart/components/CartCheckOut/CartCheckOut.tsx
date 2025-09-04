@@ -6,7 +6,7 @@ import CartTable from "../CartTable/CartTable";
 import CheckOutFooter from "../CheckOutFooter/CheckOutFooter";
 
 export default function CartCheckOut(props: CartCheckOutProps) {
-  const { cart, cartItemCount, clearCart } = props;
+  const { cart, cartItemCount } = props;
 
   const cartTotal = cart
     .reduce((total, prev) => total + prev.item.price * prev.quantity, 0)
@@ -21,7 +21,7 @@ export default function CartCheckOut(props: CartCheckOutProps) {
 
       <CartTable {...props} />
 
-      <CheckOutFooter subtotal={cartTotal} clearCart={clearCart} />
+      <CheckOutFooter subtotal={cartTotal} />
     </div>
   );
 }
