@@ -1,4 +1,3 @@
-import { describe, expect, test, vi } from "vitest";
 import { screen, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import ItemCount from "./ItemCount";
@@ -6,7 +5,7 @@ import ItemCount from "./ItemCount";
 describe("ItemCount component", () => {
   test("render quantity", () => {
     const { container } = render(
-      <ItemCount quantity={1} setQuantity={() => {}} />
+      <ItemCount quantity={1} setQuantity={() => {}} />,
     );
 
     expect(container).toMatchSnapshot();
