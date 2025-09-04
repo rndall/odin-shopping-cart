@@ -1,7 +1,10 @@
 import styles from "./Accordion.module.css";
+import AccordionItem from "./AccordionItem/AccordionItem";
 
 interface AccordionProps {
-  children: React.ReactNode;
+  children:
+    | React.ReactElement<typeof AccordionItem>
+    | React.ReactElement<typeof AccordionItem>[];
 }
 
 export default function Accordion({ children }: AccordionProps) {
