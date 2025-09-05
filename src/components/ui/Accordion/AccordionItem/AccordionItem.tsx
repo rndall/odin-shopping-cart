@@ -28,6 +28,7 @@ export default function AccordionItem({
       </button>
 
       <div
+        data-testid="accordion-item-content"
         className={`${styles.contentContainer} ${isOpen ? styles.contentVisible : ""}`}
       >
         <div className={styles.contentOuter}>
