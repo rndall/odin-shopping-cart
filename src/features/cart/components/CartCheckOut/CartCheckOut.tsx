@@ -1,11 +1,11 @@
 import styles from "./CartCheckOut.module.css";
 
-import type { CartProps as CartCheckOutProps } from "../../types/props";
+import type { CartProps as CartCheckoutProps } from "../../types/props";
 
 import CartTable from "../CartTable/CartTable";
-import CheckOutFooter from "../CheckOutFooter/CheckOutFooter";
+import CheckoutFooter from "../CheckoutFooter/CheckoutFooter";
 
-export default function CartCheckOut(props: CartCheckOutProps) {
+export default function CartCheckout(props: CartCheckoutProps) {
   const { cart, cartItemCount } = props;
 
   const cartTotal = cart
@@ -21,7 +21,7 @@ export default function CartCheckOut(props: CartCheckOutProps) {
 
       <CartTable {...props} />
 
-      <CheckOutFooter subtotal={cartTotal} />
+      <CheckoutFooter subtotal={cartTotal} />
     </div>
   );
 }

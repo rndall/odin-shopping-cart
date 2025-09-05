@@ -6,11 +6,11 @@ import Button from "../../../../components/ui/Button/Button";
 
 import { useState } from "react";
 
-interface CheckOutFooterProps {
+interface CheckoutFooterProps {
   subtotal: string;
 }
 
-export default function CheckOutFooter({ subtotal }: CheckOutFooterProps) {
+export default function CheckoutFooter({ subtotal }: CheckoutFooterProps) {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
