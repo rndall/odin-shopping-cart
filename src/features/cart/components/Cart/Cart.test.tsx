@@ -1,13 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import Cart from "./Cart";
-import type { CartProps } from "../../types/props";
+import { useCart } from "../../../products/hooks/useCart";
 
-vi.mock("../CartCheckOut/CartCheckOut", () => ({
-  default: ({ cartItemCount }: CartProps) => (
-    <div data-testid="checkout">
-      {cartItemCount} {cartItemCount === 1 ? "Item" : "Items"} in your Cart
-    </div>
-  ),
+vi.mock("../../../products/hooks/useCart", () => ({
+  useCart: vi.fn(),
+}));
+
+vi.mock("../CartCheckout/CartCheckout", () => ({
+  default: () => <div data-testid="checkout">Cart Checkout Component</div>,
 }));
 
 vi.mock("../EmptyCart/EmptyCart", () => ({
@@ -17,15 +17,16 @@ vi.mock("../EmptyCart/EmptyCart", () => ({
 }));
 
 describe("Cart Component", () => {
-  const baseProps: CartProps = {
-    cart: [],
-    handleRemoveItem: vi.fn(),
-    handleAdjustItemQuantity: vi.fn(),
-    cartItemCount: 0,
-  };
-
   test("renders EmptyCart component if cart is empty", () => {
-    render(<Cart {...baseProps} />);
+    vi.mocked(useCart).mockReturnValue({
+      cart: [],
+      handleRemoveItem: vi.fn(),
+      handleAdjustItemQuantity: vi.fn(),
+      handleAddToCart: vi.fn(),
+      cartItemCount: 0,
+    });
+
+    render(<Cart />);
 
     expect(screen.getByTestId("empty-cart")).toBeInTheDocument();
     expect(screen.queryByTestId("checkout")).not.toBeInTheDocument();
@@ -67,8 +68,15 @@ describe("Cart Component", () => {
         quantity: 1,
       },
     ];
+    vi.mocked(useCart).mockReturnValue({
+      cart: cartWithItems,
+      handleRemoveItem: vi.fn(),
+      handleAdjustItemQuantity: vi.fn(),
+      handleAddToCart: vi.fn(),
+      cartItemCount: 0,
+    });
 
-    render(<Cart {...baseProps} cart={cartWithItems} />);
+    render(<Cart />);
 
     expect(screen.getByTestId("checkout")).toBeInTheDocument();
     expect(screen.queryByTestId("empty-cart")).not.toBeInTheDocument();
