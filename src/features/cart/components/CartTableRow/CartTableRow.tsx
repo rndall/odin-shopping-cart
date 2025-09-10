@@ -1,10 +1,7 @@
 import styles from "./CartTableRow.module.css";
 
 import type { Product } from "../../../products/types";
-import type {
-  HandleAdjustItemQuantityFn,
-  HandleRemoveItemFn,
-} from "../../types";
+import { useCart } from "../../../products/hooks/useCart";
 
 import ItemCount from "../../../products/components/ItemCount/ItemCount";
 
@@ -14,16 +11,10 @@ import { Link } from "react-router";
 interface CartTableRowProps {
   item: Product;
   quantity: number;
-  handleAdjustItemQuantity: HandleAdjustItemQuantityFn;
-  handleRemoveItem: HandleRemoveItemFn;
 }
 
-export default function CartTableRow({
-  item,
-  quantity,
-  handleAdjustItemQuantity,
-  handleRemoveItem,
-}: CartTableRowProps) {
+export default function CartTableRow({ item, quantity }: CartTableRowProps) {
+  const { handleAdjustItemQuantity, handleRemoveItem } = useCart();
   const handleQuantityChange = (value: number) => {
     handleAdjustItemQuantity({ itemId: item.id, quantity: value });
   };

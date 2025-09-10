@@ -7,20 +7,17 @@ import { Star } from "lucide-react";
 import Button from "../../../../components/ui/Button/Button";
 import ItemCount from "../ItemCount/ItemCount";
 
+import { useCart } from "../../hooks/useCart";
 import type { Product } from "../../types";
-import type { HandleAddToCartFn } from "../../../cart/types";
 
 import { useState } from "react";
 
 interface ProductsGridItemProps {
   product: Product;
-  handleAddToCart: HandleAddToCartFn;
 }
 
-export default function ProductsGridItem({
-  product,
-  handleAddToCart,
-}: ProductsGridItemProps) {
+export default function ProductsGridItem({ product }: ProductsGridItemProps) {
+  const { handleAddToCart } = useCart();
   const { image, title, rating, price } = product;
 
   const [itemQuantity, setItemQuantity] = useState(1);

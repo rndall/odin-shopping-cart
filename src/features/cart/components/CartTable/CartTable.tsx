@@ -1,11 +1,11 @@
 import styles from "./CartTable.module.css";
 
-import type { CartProps as CartTableProps } from "../../types/props";
+import { useCart } from "../../../products/hooks/useCart";
 
 import CartTableRow from "../CartTableRow/CartTableRow";
 
-export default function CartTable(props: CartTableProps) {
-  const { cart, handleAdjustItemQuantity, handleRemoveItem } = props;
+export default function CartTable() {
+  const { cart } = useCart();
   const tableHeaders = ["Item", "Quantity", "Price", ""];
 
   return (
@@ -20,13 +20,7 @@ export default function CartTable(props: CartTableProps) {
 
       <div className={styles.tableBody}>
         {cart.map(({ item, quantity }) => (
-          <CartTableRow
-            key={item.id}
-            item={item}
-            quantity={quantity}
-            handleAdjustItemQuantity={handleAdjustItemQuantity}
-            handleRemoveItem={handleRemoveItem}
-          />
+          <CartTableRow key={item.id} item={item} quantity={quantity} />
         ))}
       </div>
     </div>

@@ -1,12 +1,12 @@
 import styles from "./CartCheckout.module.css";
 
-import type { CartProps as CartCheckoutProps } from "../../types/props";
+import { useCart } from "../../../products/hooks/useCart";
 
 import CartTable from "../CartTable/CartTable";
 import CheckoutFooter from "../CheckoutFooter/CheckoutFooter";
 
-export default function CartCheckout(props: CartCheckoutProps) {
-  const { cart, cartItemCount } = props;
+export default function CartCheckout() {
+  const { cart, cartItemCount } = useCart();
 
   const cartTotal = cart
     .reduce((total, prev) => total + prev.item.price * prev.quantity, 0)
@@ -19,7 +19,7 @@ export default function CartCheckout(props: CartCheckoutProps) {
         for ${cartTotal}
       </h1>
 
-      <CartTable {...props} />
+      <CartTable />
 
       <CheckoutFooter subtotal={cartTotal} />
     </div>
