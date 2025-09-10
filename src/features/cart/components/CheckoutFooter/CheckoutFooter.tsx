@@ -1,4 +1,4 @@
-import styles from "./CheckOutFooter.module.css";
+import styles from "./CheckoutFooter.module.css";
 
 import { useNavigate, Link } from "react-router";
 

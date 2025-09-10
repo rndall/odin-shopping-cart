@@ -1,4 +1,4 @@
-import styles from "./CartCheckOut.module.css";
+import styles from "./CartCheckout.module.css";
 
 import type { CartProps as CartCheckoutProps } from "../../types/props";
 
