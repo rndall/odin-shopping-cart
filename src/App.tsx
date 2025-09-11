@@ -6,10 +6,14 @@ import Navbar from "./components/Navbar/Navbar";
 
 import type { CartItem } from "./features/cart/types";
 
-import { useState } from "react";
+import { getCartLocalStorage, setCartLocalStorage } from "./api";
+
+import { useState, useEffect } from "react";
 
 function App() {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useState<CartItem[]>(getCartLocalStorage() || []);
+
+  useEffect(() => setCartLocalStorage(cart), [cart]);
 
   const handleAddToCart = ({ item, quantity }: CartItem) => {
     const productIndex = cart.findIndex((ci) => ci.item.id === item.id);

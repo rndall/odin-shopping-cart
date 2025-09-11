@@ -1,3 +1,5 @@
+import type { CartItem } from "../features/cart/types";
+
 const get = async (url: string) => {
   const response = await fetch(url);
 
@@ -8,4 +10,18 @@ const get = async (url: string) => {
   return response.json();
 };
 
-export { get };
+const setCartLocalStorage = (cart: CartItem[]) => {
+  const value = JSON.stringify(cart);
+
+  localStorage.setItem("cart", value);
+};
+
+const getCartLocalStorage = (): CartItem[] | null => {
+  const cartData = localStorage.getItem("cart");
+
+  if (!cartData) return null;
+
+  return JSON.parse(cartData);
+};
+
+export { get, setCartLocalStorage, getCartLocalStorage };
