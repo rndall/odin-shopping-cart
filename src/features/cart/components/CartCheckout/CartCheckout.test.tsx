@@ -1,15 +1,13 @@
 import { render } from "@testing-library/react";
 import CartCheckout from "./CartCheckout";
-import type { CartProps } from "../../types/props";
+import { useCart } from "../../../products/hooks/useCart";
+
+vi.mock("../../../products/hooks/useCart", () => ({
+  useCart: vi.fn(),
+}));
 
 vi.mock("../CartTable/CartTable", () => ({
-  default: ({ cart }: CartProps) => (
-    <div>
-      {cart.map(({ item }) => (
-        <div key={item.id}>{item.title}</div>
-      ))}
-    </div>
-  ),
+  default: () => <div>Cart Table</div>,
 }));
 
 vi.mock("../CheckoutFooter/CheckOutFooter", () => ({
@@ -17,8 +15,8 @@ vi.mock("../CheckoutFooter/CheckOutFooter", () => ({
 }));
 
 describe("CartCheckout component", () => {
-  const renderComponent = (props: CartProps) => {
-    const { container } = render(<CartCheckout {...props} />);
+  const renderComponent = () => {
+    const { container } = render(<CartCheckout />);
 
     return {
       container,
@@ -26,7 +24,7 @@ describe("CartCheckout component", () => {
   };
 
   test("render 'Items' if cartItemCount !== 1", () => {
-    const props: CartProps = {
+    const mockedUseCartReturn = {
       cart: [
         {
           item: {
@@ -64,15 +62,18 @@ describe("CartCheckout component", () => {
       cartItemCount: 5,
       handleAdjustItemQuantity: () => {},
       handleRemoveItem: () => {},
+      handleAddToCart: () => {},
     };
 
-    const { container } = renderComponent(props);
+    vi.mocked(useCart).mockReturnValue(mockedUseCartReturn);
+
+    const { container } = renderComponent();
 
     expect(container).toMatchSnapshot();
   });
 
   test("render 'Item' if cartItemCount === 1", () => {
-    const props: CartProps = {
+    const mockedUseCartReturn = {
       cart: [
         {
           item: {
@@ -94,9 +95,12 @@ describe("CartCheckout component", () => {
       cartItemCount: 1,
       handleAdjustItemQuantity: () => {},
       handleRemoveItem: () => {},
+      handleAddToCart: () => {},
     };
 
-    const { container } = renderComponent(props);
+    vi.mocked(useCart).mockReturnValue(mockedUseCartReturn);
+
+    const { container } = renderComponent();
 
     expect(container).toMatchSnapshot();
   });
