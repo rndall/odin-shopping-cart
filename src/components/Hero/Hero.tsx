@@ -27,7 +27,7 @@ export default function Hero() {
         <div className={styles.collageContainer}>
           <div className={styles.collageBackground}>
             <img
-              src="https://placecats.com/600/900"
+              src="https://placecats.com/neo/600/900"
               className={styles.collageImage1}
             />
             <img
