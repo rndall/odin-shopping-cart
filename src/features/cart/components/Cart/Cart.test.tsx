@@ -20,9 +20,9 @@ describe("Cart Component", () => {
   test("renders EmptyCart component if cart is empty", () => {
     vi.mocked(useCart).mockReturnValue({
       cart: [],
-      handleRemoveItem: vi.fn(),
-      handleAdjustItemQuantity: vi.fn(),
-      handleAddToCart: vi.fn(),
+      handleAdjustItemQuantity: () => {},
+      handleRemoveItem: () => {},
+      handleAddToCart: () => {},
       cartItemCount: 0,
     });
 
@@ -70,9 +70,9 @@ describe("Cart Component", () => {
     ];
     vi.mocked(useCart).mockReturnValue({
       cart: cartWithItems,
-      handleRemoveItem: vi.fn(),
-      handleAdjustItemQuantity: vi.fn(),
-      handleAddToCart: vi.fn(),
+      handleAdjustItemQuantity: () => {},
+      handleRemoveItem: () => {},
+      handleAddToCart: () => {},
       cartItemCount: 0,
     });
 
