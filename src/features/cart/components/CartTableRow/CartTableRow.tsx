@@ -34,9 +34,7 @@ export default function CartTableRow({ item, quantity }: CartTableRowProps) {
           </Link>
         </div>
 
-        <div className={styles.productPrice}>
-          ${(item.price * quantity).toFixed(2)}
-        </div>
+        <div className={styles.productPrice}>${item.price.toFixed(2)}</div>
 
         <div className={styles.productCount}>
           <ItemCount
