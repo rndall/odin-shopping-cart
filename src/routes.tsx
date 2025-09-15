@@ -1,5 +1,3 @@
-import type { LoaderFunctionArgs } from "react-router";
-
 import App from "./App";
 import Home from "./routes/Home";
 import Shop from "./routes/Shop";
@@ -8,11 +6,12 @@ import CheckoutSuccess from "./routes/CheckoutSuccess/CheckoutSuccess";
 import Product from "./features/products/routes/Product/Product";
 import HydrateFallback from "./components/HydrateFallback";
 
-import { getProducts, getProduct } from "./features/products/api/productsApi";
+import { shopLoader, productLoader } from "./api/loaders";
 
 const routes = [
   {
     Component: App,
+    HydrateFallback,
     children: [
       { index: true, Component: Home },
       {
@@ -21,10 +20,7 @@ const routes = [
           {
             index: true,
             Component: Shop,
-            HydrateFallback,
-            loader: async () => {
-              return await getProducts();
-            },
+            loader: shopLoader,
           },
           { path: "cart", Component: ShoppingCart },
         ],
@@ -32,14 +28,7 @@ const routes = [
       {
         path: "products/:productId",
         Component: Product,
-        HydrateFallback,
-        loader: async ({ params }: LoaderFunctionArgs) => {
-          const { productId } = params;
-
-          if (!productId) return;
-
-          return await getProduct(productId);
-        },
+        loader: productLoader,
       },
     ],
   },
