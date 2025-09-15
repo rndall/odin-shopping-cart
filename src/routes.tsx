@@ -1,4 +1,4 @@
-import App from "./App";
+import Root from "./routes/Root/Root";
 import Home from "./routes/Home";
 import Shop from "./routes/Shop";
 import ShoppingCart from "./features/cart/routes/ShoppingCart";
@@ -10,7 +10,7 @@ import { shopLoader, productLoader } from "./api/loaders";
 
 const routes = [
   {
-    Component: App,
+    Component: Root,
     HydrateFallback,
     children: [
       { index: true, Component: Home },

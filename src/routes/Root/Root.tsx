@@ -1,16 +1,16 @@
-import "./App.css";
+import "./Root.css";
 
 import { Outlet, ScrollRestoration } from "react-router";
 
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "../../components/Navbar/Navbar";
 
-import type { CartItem } from "./features/cart/types";
+import type { CartItem } from "../../features/cart/types";
 
-import { getCartLocalStorage, setCartLocalStorage } from "./api";
+import { getCartLocalStorage, setCartLocalStorage } from "../../api";
 
 import { useState, useEffect } from "react";
 
-function App() {
+function Root() {
   const [cart, setCart] = useState<CartItem[]>(getCartLocalStorage() || []);
 
   useEffect(() => setCartLocalStorage(cart), [cart]);
@@ -76,4 +76,4 @@ function App() {
   );
 }
 
-export default App;
+export default Root;
