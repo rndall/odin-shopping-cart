@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router";
 
 import Button from "../../../../components/ui/Button/Button";
 
+import { useCart } from "../../../products/hooks/useCart";
 import { useState } from "react";
 
 interface CheckoutFooterProps {
@@ -11,6 +12,7 @@ interface CheckoutFooterProps {
 }
 
 export default function CheckoutFooter({ subtotal }: CheckoutFooterProps) {
+  const { handleClearCart } = useCart();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -18,6 +20,7 @@ export default function CheckoutFooter({ subtotal }: CheckoutFooterProps) {
     setIsLoading(true);
 
     setTimeout(() => {
+      handleClearCart();
       setIsLoading(false);
       navigate("/checkout-success");
     }, 2000);

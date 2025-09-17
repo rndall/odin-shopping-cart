@@ -14,10 +14,12 @@ type HandleAdjustItemQuantityFn = ({
   quantity: number;
 }) => void;
 type HandleRemoveItemFn = (itemId: number) => void;
+type HandleClearCartFn = () => void;
 
 export type {
   CartItem,
   HandleAddToCartFn,
   HandleAdjustItemQuantityFn,
   HandleRemoveItemFn,
+  HandleClearCartFn,
 };

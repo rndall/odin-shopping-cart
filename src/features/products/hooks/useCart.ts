@@ -1,9 +1,6 @@
 import { useOutletContext } from "react-router";
 
-import type { HandleAddToCartFn } from "../../cart/types";
-import type { CartProps } from "../../cart/types/props";
-
-type ContextType = { handleAddToCart: HandleAddToCartFn } & CartProps;
+import type { ContextType } from "../../../types";
 
 const useCart = () => useOutletContext<ContextType>();
 

@@ -5,6 +5,7 @@ import { Outlet, ScrollRestoration } from "react-router";
 import Navbar from "../../components/Navbar/Navbar";
 
 import type { CartItem } from "../../features/cart/types";
+import type { ContextType } from "../../types";
 
 import { getCartLocalStorage, setCartLocalStorage } from "../../api";
 
@@ -49,6 +50,8 @@ function Root() {
     setCart(nextCart);
   };
 
+  const handleClearCart = () => setCart([]);
+
   const cartItemCount = cart.reduce((total, prev) => total + prev.quantity, 0);
 
   return (
@@ -57,13 +60,16 @@ function Root() {
 
       <main className="main">
         <Outlet
-          context={{
-            handleAddToCart,
-            handleAdjustItemQuantity,
-            handleRemoveItem,
-            cart,
-            cartItemCount,
-          }}
+          context={
+            {
+              handleAddToCart,
+              handleAdjustItemQuantity,
+              handleRemoveItem,
+              handleClearCart,
+              cart,
+              cartItemCount,
+            } satisfies ContextType
+          }
         />
         <ScrollRestoration
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
