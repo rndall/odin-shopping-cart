@@ -9,25 +9,68 @@ import type { ContextType } from "../../types";
 
 import { getCartLocalStorage, setCartLocalStorage } from "../../api";
 
-import { useState, useEffect } from "react";
+import { useEffect, useReducer } from "react";
+
+type State = CartItem[];
+
+const initialState: State = [];
+
+type CartAction =
+  | { type: "added"; cartItem: CartItem }
+  | {
+      type: "adjusted";
+      itemId: number;
+      quantity: number;
+    }
+  | { type: "removed"; itemId: number }
+  | { type: "cleared" };
+
+function cartReducer(cart: State, action: CartAction) {
+  switch (action.type) {
+    case "added": {
+      return [...cart, action.cartItem];
+    }
+    case "adjusted": {
+      return cart.map((c) => {
+        if (c.item.id === action.itemId) {
+          return { ...c, quantity: action.quantity };
+        } else {
+          return c;
+        }
+      });
+    }
+    case "removed": {
+      return cart.filter((c) => c.item.id !== action.itemId);
+    }
+    case "cleared": {
+      return initialState;
+    }
+  }
+}
 
 function Root() {
-  const [cart, setCart] = useState<CartItem[]>(getCartLocalStorage() || []);
+  const [cart, dispatch] = useReducer(
+    cartReducer,
+    getCartLocalStorage() || initialState
+  );
 
   useEffect(() => setCartLocalStorage(cart), [cart]);
 
-  const handleAddToCart = ({ item, quantity }: CartItem) => {
-    const productIndex = cart.findIndex((ci) => ci.item.id === item.id);
+  const handleAddToCart = (cartItem: CartItem) => {
+    const productIndex = cart.findIndex(
+      (ci) => ci.item.id === cartItem.item.id
+    );
 
     if (productIndex === -1) {
-      setCart([...cart, { item, quantity }]);
+      dispatch({ type: "added", cartItem });
       return;
     }
 
-    const nextCart = [...cart];
-    const existingItem = nextCart[productIndex];
-    existingItem.quantity = existingItem.quantity += quantity;
-    setCart(nextCart);
+    dispatch({
+      type: "adjusted",
+      itemId: cartItem.item.id,
+      quantity: cartItem.quantity + 1,
+    });
   };
 
   const handleAdjustItemQuantity = ({
@@ -36,21 +79,12 @@ function Root() {
   }: {
     itemId: number;
     quantity: number;
-  }) => {
-    const productIndex = cart.findIndex((ci) => ci.item.id === itemId);
+  }) => dispatch({ type: "adjusted", itemId, quantity });
 
-    const nextCart = [...cart];
-    const existingItem = nextCart[productIndex];
-    existingItem.quantity = quantity;
-    setCart(nextCart);
-  };
+  const handleRemoveItem = (itemId: number) =>
+    dispatch({ type: "removed", itemId });
 
-  const handleRemoveItem = (itemId: number) => {
-    const nextCart = cart.filter(({ item }) => item.id !== itemId);
-    setCart(nextCart);
-  };
-
-  const handleClearCart = () => setCart([]);
+  const handleClearCart = () => dispatch({ type: "cleared" });
 
   const cartItemCount = cart.reduce((total, prev) => total + prev.quantity, 0);
 
