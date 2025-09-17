@@ -106,8 +106,7 @@ function Root() {
           }
         />
         <ScrollRestoration
-          // eslint-disable-next-line @typescript-eslint/no-unused-vars
-          getKey={(location, _matches) => {
+          getKey={(location) => {
             return location.pathname;
           }}
         />
