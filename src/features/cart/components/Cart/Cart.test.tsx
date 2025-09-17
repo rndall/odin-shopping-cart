@@ -23,6 +23,7 @@ describe("Cart Component", () => {
       handleAdjustItemQuantity: () => {},
       handleRemoveItem: () => {},
       handleAddToCart: () => {},
+      handleClearCart: () => {},
       cartItemCount: 0,
     });
 
@@ -73,6 +74,7 @@ describe("Cart Component", () => {
       handleAdjustItemQuantity: () => {},
       handleRemoveItem: () => {},
       handleAddToCart: () => {},
+      handleClearCart: () => {},
       cartItemCount: 0,
     });
 

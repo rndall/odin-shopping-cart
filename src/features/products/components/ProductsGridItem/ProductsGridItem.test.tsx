@@ -34,6 +34,7 @@ describe("ProductsGridItem component", () => {
       handleAdjustItemQuantity: () => {},
       handleRemoveItem: () => {},
       handleAddToCart: () => {},
+      handleClearCart: () => {},
       cartItemCount: 0,
     };
     vi.mocked(useCart).mockReturnValue(mockedUseCartReturn);
@@ -50,6 +51,7 @@ describe("ProductsGridItem component", () => {
       handleAdjustItemQuantity: () => {},
       handleRemoveItem: () => {},
       handleAddToCart,
+      handleClearCart: () => {},
       cartItemCount: 0,
     };
     const user = userEvent.setup();

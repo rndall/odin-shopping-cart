@@ -63,6 +63,7 @@ describe("CartCheckout component", () => {
       handleAdjustItemQuantity: () => {},
       handleRemoveItem: () => {},
       handleAddToCart: () => {},
+      handleClearCart: () => {},
     };
 
     vi.mocked(useCart).mockReturnValue(mockedUseCartReturn);
@@ -96,6 +97,7 @@ describe("CartCheckout component", () => {
       handleAdjustItemQuantity: () => {},
       handleRemoveItem: () => {},
       handleAddToCart: () => {},
+      handleClearCart: () => {},
     };
 
     vi.mocked(useCart).mockReturnValue(mockedUseCartReturn);
