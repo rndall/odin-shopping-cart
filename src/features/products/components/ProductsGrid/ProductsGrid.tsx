@@ -1,13 +1,12 @@
 import styles from "./ProductsGrid.module.css";
 
-import { useLoaderData } from "react-router";
-
-import type { Product } from "../../types";
-
 import ProductsGridItem from "../ProductsGridItem/ProductsGridItem";
 
+import { productsQuery } from "../../api/productsApi";
+import { useSuspenseQuery } from "@tanstack/react-query";
+
 export default function ProductsGrid() {
-  const products = useLoaderData<Product[]>();
+  const { data: products } = useSuspenseQuery(productsQuery());
 
   return (
     <div className={styles.grid}>

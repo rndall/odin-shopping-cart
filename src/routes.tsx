@@ -8,6 +8,8 @@ import HydrateFallback from "./components/HydrateFallback";
 
 import { shopLoader, productLoader } from "./api/loaders";
 
+import queryClient from "./queryClient";
+
 const routes = [
   {
     Component: Root,
@@ -20,7 +22,7 @@ const routes = [
           {
             index: true,
             Component: Shop,
-            loader: shopLoader,
+            loader: shopLoader(queryClient),
           },
           { path: "cart", Component: ShoppingCart },
         ],
@@ -28,7 +30,7 @@ const routes = [
       {
         path: "products/:productId",
         Component: Product,
-        loader: productLoader,
+        loader: productLoader(queryClient),
       },
     ],
   },

@@ -1,6 +1,6 @@
 import type { CartItem } from "../features/cart/types";
 
-const get = async (url: string) => {
+const get = async <T>(url: string): Promise<T> => {
   const response = await fetch(url);
 
   if (!response.ok) {

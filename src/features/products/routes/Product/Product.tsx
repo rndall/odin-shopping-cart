@@ -13,12 +13,18 @@ import Accordion from "../../../../components/ui/Accordion/Accordion";
 import AccordionItem from "../../../../components/ui/Accordion/AccordionItem/AccordionItem";
 
 import useIsVisible from "../../../../hooks/useIsVisible";
+import { productLoader } from "../../../../api/loaders";
 
 import { useRef, useState } from "react";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { productDetailQuery } from "../../api/productsApi";
 
 export default function Product() {
   const { handleAddToCart } = useCart();
-  const product = useLoaderData<Product>();
+  const { productId } = useLoaderData() as Awaited<
+    ReturnType<ReturnType<typeof productLoader>>
+  >;
+  const { data: product } = useSuspenseQuery(productDetailQuery(productId));
   const { image, title, price, rating, description } = product;
   const [itemQuantity, setItemQuantity] = useState(1);
 

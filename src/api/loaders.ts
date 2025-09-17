@@ -1,14 +1,24 @@
+import type { QueryClient } from "@tanstack/react-query";
 import type { LoaderFunctionArgs } from "react-router";
 
-import { getProduct, getProducts } from "../features/products/api/productsApi";
+import {
+  productsQuery,
+  productDetailQuery,
+} from "../features/products/api/productsApi";
 
-async function shopLoader() {
-  return await getProducts();
-}
+const shopLoader = (queryClient: QueryClient) => async () => {
+  await queryClient.ensureQueryData(productsQuery());
+};
 
-async function productLoader({ params }: LoaderFunctionArgs) {
-  const { productId } = params as { productId: string };
-  return await getProduct(productId);
-}
+const productLoader =
+  (queryClient: QueryClient) =>
+  async ({ params }: LoaderFunctionArgs) => {
+    const { productId } = params;
+
+    if (!productId) throw new Error("No product ID provided");
+
+    await queryClient.ensureQueryData(productDetailQuery(productId));
+    return { productId };
+  };
 
 export { shopLoader, productLoader };
