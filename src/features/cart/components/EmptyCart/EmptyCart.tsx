@@ -1,4 +1,4 @@
-import BackToShopBanner from "../../../../components/BackToShopBanner/BackToShopBanner";
+import BackToShopBanner from "@/components/BackToShopBanner"
 
 export default function EmptyCart() {
   return (
@@ -6,5 +6,5 @@ export default function EmptyCart() {
       headingText="Your Shopping Cart is Empty"
       linkText="Start Shopping"
     />
-  );
+  )
 }
