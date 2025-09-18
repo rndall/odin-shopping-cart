@@ -1,10 +1,8 @@
-import styles from "./CheckoutSuccess.module.css"
-
-import BackToShopBanner from "../../components/BackToShopBanner"
+import BackToShopBanner from "@/components/BackToShopBanner"
 
 export default function CheckoutSuccess() {
   return (
-    <div className={styles.container}>
+    <div className="flex min-h-dvh justify-center">
       <BackToShopBanner
         headingText="Thank You for Your Purchase"
         linkText="Shop Again"
