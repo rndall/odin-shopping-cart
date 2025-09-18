@@ -1,4 +1,4 @@
-import Container from "./container"
+import Container from "./ui/container"
 import { Link } from "react-router"
 import { Button } from "./ui/button"
 
