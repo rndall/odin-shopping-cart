@@ -23,6 +23,7 @@ const routes = [
             index: true,
             Component: Shop,
             loader: shopLoader(queryClient),
+            HydrateFallback,
           },
           { path: "cart", Component: ShoppingCart },
         ],
@@ -30,6 +31,7 @@ const routes = [
       {
         path: "products/:productId",
         Component: Product,
+        HydrateFallback,
         loader: productLoader(queryClient),
       },
     ],

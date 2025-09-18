@@ -1,20 +1,18 @@
-import style from "./StatusHandler.module.css";
-
-import Loader from "../ui/Loader/Loader";
+import Loader from "../ui/Loader/Loader"
 
 interface StatusHandlerProps {
-  loading?: boolean;
-  error?: string;
+  loading?: boolean
+  error?: string
 }
 
 export default function StatusHandler({ loading, error }: StatusHandlerProps) {
-  if (!loading && !error) return null;
+  if (!loading && !error) return null
 
-  const status = loading ? <Loader size={48} /> : error;
+  const status = loading ? <Loader size={48} /> : error
 
   return (
-    <div className={style.statusHandler}>
+    <div className="grid h-[80dvh] place-items-center">
       <p>{status}</p>
     </div>
-  );
+  )
 }
