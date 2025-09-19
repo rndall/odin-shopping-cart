@@ -1,42 +1,46 @@
-import styles from "./Product.module.css";
+import styles from "./Product.module.css"
 
-import { useCart } from "../../hooks/useCart";
-import { useLoaderData } from "react-router";
+import { useCart } from "../../hooks/useCart"
+import { useLoaderData } from "react-router"
 
-import { Star } from "lucide-react";
+import { Star } from "lucide-react"
 
-import type { Product } from "../../types";
+import type { Product } from "../../types"
+import type { ProductAccordionItems } from "../../components/ProductAccordion/ProductAccordion"
 
-import ItemCount from "../../components/ItemCount/ItemCount";
-import Button from "../../../../components/ui/Button/Button";
-import Accordion from "../../../../components/ui/Accordion/Accordion";
-import AccordionItem from "../../../../components/ui/Accordion/AccordionItem/AccordionItem";
+import ItemCount from "../../components/ItemCount/ItemCount"
+import Button from "../../../../components/ui/Button/Button"
+import ProductAccordion from "../../components/ProductAccordion/ProductAccordion"
 
-import useIsVisible from "../../../../hooks/useIsVisible";
-import { productLoader } from "../../../../api/loaders";
+import useIsVisible from "../../../../hooks/useIsVisible"
+import { productLoader } from "../../../../api/loaders"
 
-import { useRef, useState } from "react";
-import { useSuspenseQuery } from "@tanstack/react-query";
-import { productDetailQuery } from "../../api/productsApi";
+import { useRef, useState } from "react"
+import { useSuspenseQuery } from "@tanstack/react-query"
+import { productDetailQuery } from "../../api/productsApi"
 
 export default function Product() {
-  const { handleAddToCart } = useCart();
+  const { handleAddToCart } = useCart()
   const { productId } = useLoaderData() as Awaited<
     ReturnType<ReturnType<typeof productLoader>>
-  >;
-  const { data: product } = useSuspenseQuery(productDetailQuery(productId));
-  const { image, title, price, rating, description } = product;
-  const [itemQuantity, setItemQuantity] = useState(1);
+  >
+  const { data: product } = useSuspenseQuery(productDetailQuery(productId))
+  const { image, title, price, rating, description } = product
+  const [itemQuantity, setItemQuantity] = useState(1)
 
-  const addToCartBtnRef = useRef<HTMLButtonElement>(null);
+  const addToCartBtnRef = useRef<HTMLButtonElement>(null)
 
-  const isAddToCardBtnVisible = useIsVisible(addToCartBtnRef);
+  const isAddToCardBtnVisible = useIsVisible(addToCartBtnRef)
+
+  const productAccordionItems: ProductAccordionItems[] = [
+    { trigger: "Description", content: description },
+  ]
 
   const onAddToCartClick = () => {
-    handleAddToCart({ item: product, quantity: itemQuantity });
+    handleAddToCart({ item: product, quantity: itemQuantity })
 
-    setItemQuantity(1);
-  };
+    setItemQuantity(1)
+  }
 
   return (
     <>
@@ -73,9 +77,7 @@ export default function Product() {
               </div>
 
               <div className={styles.accordionContainer}>
-                <Accordion>
-                  <AccordionItem trigger="Description" content={description} />
-                </Accordion>
+                <ProductAccordion items={productAccordionItems} />
               </div>
             </div>
           </div>
@@ -90,5 +92,5 @@ export default function Product() {
         </div>
       </section>
     </>
-  );
+  )
 }
