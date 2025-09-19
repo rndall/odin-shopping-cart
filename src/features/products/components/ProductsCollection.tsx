@@ -1,5 +1,5 @@
 import Container from "@/components/ui/container"
-import ProductsGrid from "./ProductsGrid/ProductsGrid"
+import ProductsGrid from "./ProductsGrid"
 
 export default function ProductsCollection() {
   return (

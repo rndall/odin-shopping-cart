@@ -1,34 +1,34 @@
-import styles from "./ProductsGridItem.module.css";
+import styles from "./ProductsGridItem.module.css"
 
-import { Link } from "react-router";
+import { Link } from "react-router"
 
-import { Star } from "lucide-react";
+import { Star } from "lucide-react"
 
-import Button from "../../../../components/ui/Button/Button";
-import ItemCount from "../ItemCount/ItemCount";
+import { Button } from "@/components/ui/button"
+import ItemCount from "../ItemCount/ItemCount"
 
-import { useCart } from "../../hooks/useCart";
-import type { Product } from "../../types";
+import { useCart } from "../../hooks/useCart"
+import type { Product } from "../../types"
 
-import { useState } from "react";
+import { useState } from "react"
 
 interface ProductsGridItemProps {
-  product: Product;
+  product: Product
 }
 
 export default function ProductsGridItem({ product }: ProductsGridItemProps) {
-  const { handleAddToCart } = useCart();
-  const { image, title, rating, price } = product;
+  const { handleAddToCart } = useCart()
+  const { image, title, rating, price } = product
 
-  const [itemQuantity, setItemQuantity] = useState(1);
+  const [itemQuantity, setItemQuantity] = useState(1)
 
-  const handleQuantityChange = (value: number) => setItemQuantity(value);
+  const handleQuantityChange = (value: number) => setItemQuantity(value)
 
   const onAddToCartClick = () => {
-    handleAddToCart({ item: product, quantity: itemQuantity });
+    handleAddToCart({ item: product, quantity: itemQuantity })
 
-    setItemQuantity(1);
-  };
+    setItemQuantity(1)
+  }
 
   return (
     <div className={styles.product}>
@@ -52,12 +52,17 @@ export default function ProductsGridItem({ product }: ProductsGridItemProps) {
           </div>
         </Link>
 
-        <ItemCount quantity={itemQuantity} setQuantity={handleQuantityChange} />
+        <div className="flex items-center gap-3">
+          <ItemCount
+            quantity={itemQuantity}
+            setQuantity={handleQuantityChange}
+          />
 
-        <Button onClick={onAddToCartClick} size="sm" fullWidth>
-          Add to Cart
-        </Button>
+          <Button className="grow" onClick={onAddToCartClick} size="sm">
+            Add to Cart
+          </Button>
+        </div>
       </div>
     </div>
-  );
+  )
 }
