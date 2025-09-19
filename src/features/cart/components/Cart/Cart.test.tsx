@@ -1,20 +1,20 @@
-import { render, screen } from "@testing-library/react";
-import Cart from "./Cart";
-import { useCart } from "../../../products/hooks/useCart";
+import { render, screen } from "@testing-library/react"
+import Cart from "./Cart"
+import { useCart } from "../../../products/hooks/useCart"
 
 vi.mock("../../../products/hooks/useCart", () => ({
   useCart: vi.fn(),
-}));
+}))
 
 vi.mock("../CartCheckout/CartCheckout", () => ({
   default: () => <div data-testid="checkout">Cart Checkout Component</div>,
-}));
+}))
 
-vi.mock("../EmptyCart/EmptyCart", () => ({
+vi.mock("../EmptyCart", () => ({
   default: () => (
     <div data-testid="empty-cart">Your Shopping Cart is Empty </div>
   ),
-}));
+}))
 
 describe("Cart Component", () => {
   test("renders EmptyCart component if cart is empty", () => {
@@ -25,13 +25,13 @@ describe("Cart Component", () => {
       handleAddToCart: () => {},
       handleClearCart: () => {},
       cartItemCount: 0,
-    });
+    })
 
-    render(<Cart />);
+    render(<Cart />)
 
-    expect(screen.getByTestId("empty-cart")).toBeInTheDocument();
-    expect(screen.queryByTestId("checkout")).not.toBeInTheDocument();
-  });
+    expect(screen.getByTestId("empty-cart")).toBeInTheDocument()
+    expect(screen.queryByTestId("checkout")).not.toBeInTheDocument()
+  })
 
   test("renders CartCheckOut component if cart isn't empty", () => {
     const cartWithItems = [
@@ -68,7 +68,7 @@ describe("Cart Component", () => {
         },
         quantity: 1,
       },
-    ];
+    ]
     vi.mocked(useCart).mockReturnValue({
       cart: cartWithItems,
       handleAdjustItemQuantity: () => {},
@@ -76,11 +76,11 @@ describe("Cart Component", () => {
       handleAddToCart: () => {},
       handleClearCart: () => {},
       cartItemCount: 0,
-    });
+    })
 
-    render(<Cart />);
+    render(<Cart />)
 
-    expect(screen.getByTestId("checkout")).toBeInTheDocument();
-    expect(screen.queryByTestId("empty-cart")).not.toBeInTheDocument();
-  });
-});
+    expect(screen.getByTestId("checkout")).toBeInTheDocument()
+    expect(screen.queryByTestId("empty-cart")).not.toBeInTheDocument()
+  })
+})

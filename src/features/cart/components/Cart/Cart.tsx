@@ -2,7 +2,7 @@ import { useCart } from "@/features/products/hooks/useCart"
 
 import Container from "@/components/ui/container"
 import CartCheckout from "../CartCheckout/CartCheckout"
-import EmptyCart from "../EmptyCart/EmptyCart"
+import EmptyCart from "../EmptyCart"
 
 export default function Cart() {
   const { cart } = useCart()
