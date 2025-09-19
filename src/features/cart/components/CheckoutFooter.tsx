@@ -26,7 +26,7 @@ export default function CheckoutFooter({ subtotal }: CheckoutFooterProps) {
 
   return (
     <div className="flex flex-col justify-between gap-4.5 sm:flex-row">
-      <div className="flex flex-col space-y-8 border-t border-t-black/10 pt-8 sm:order-1 sm:shrink sm:grow-0 sm:basis-80 sm:space-y-11 sm:pt-12.5">
+      <div className="flex flex-col space-y-8 border-t border-black/10 pt-8 sm:order-1 sm:shrink sm:grow-0 sm:basis-80 sm:space-y-11 sm:pt-12.5">
         <div className="flex justify-between font-bold">
           <p>Subtotal</p>
           <p>${subtotal}</p>
