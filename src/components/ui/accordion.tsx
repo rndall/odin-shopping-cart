@@ -33,7 +33,7 @@ function AccordionTrigger({
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          "focus-visible:border-ring focus-visible:ring-ring/50 group flex flex-1 cursor-pointer items-start justify-between gap-4 rounded-md py-8 text-left font-[Anton,_sans-serif] uppercase transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50",
+          "focus-visible:border-ring focus-visible:ring-ring/50 group font-heading flex flex-1 cursor-pointer items-start justify-between gap-4 rounded-md py-8 text-left uppercase transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50",
           className,
         )}
         {...props}

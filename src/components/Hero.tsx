@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section className="ms-auto grid items-center py-4 sm:grid-cols-[repeat(2,_1fr)] lg:max-w-[90%]">
       <Container className="relative z-10 flex flex-col space-y-6">
-        <h1 className="text-center font-[Anton,_sans-serif] text-4xl uppercase sm:text-start sm:text-5xl/tight lg:text-8xl">
+        <h1 className="font-heading text-center text-4xl uppercase sm:text-start sm:text-5xl/tight lg:text-8xl">
           Thanks for Escaping with us!
         </h1>
 

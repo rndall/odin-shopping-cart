@@ -12,7 +12,7 @@ export default function BackToShopBanner({
 }: BackToShopBannerProps) {
   return (
     <div className="flex min-h-[70dvh] flex-col items-center justify-center space-y-8">
-      <h1 className="text-center font-[Anton,_sans-serif] text-3xl uppercase">
+      <h1 className="font-heading text-center text-3xl uppercase">
         {headingText}
       </h1>
       <Link to="/shop">
