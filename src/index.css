@@ -70,7 +70,7 @@
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0 0 0 / 0.16);
   --border-hover: oklch(0 0 0 / 0.4);
-  --input: oklch(0.922 0 0);
+  --input: oklch(0 0 0 / 0.16);
   --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -127,5 +127,13 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
   }
 }
