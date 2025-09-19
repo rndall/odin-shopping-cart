@@ -1,11 +1,10 @@
-import styles from "./ItemCount.module.css";
-
-import Button from "../../../../components/ui/Button/Button";
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 
 interface ItemCountProps {
-  quantity: number;
-  setQuantity: (value: number) => void;
-  inputOnlySm?: boolean;
+  quantity: number
+  setQuantity: (value: number) => void
+  inputOnlySm?: boolean
 }
 
 export default function ItemCount({
@@ -14,33 +13,37 @@ export default function ItemCount({
   inputOnlySm,
 }: ItemCountProps) {
   return (
-    <div
-      className={`${styles.itemCount} ${inputOnlySm ? styles.inputOnlySm : ""}`}
-    >
+    <div className="flex items-center -space-x-[2px]">
       <Button
-        size="xs"
-        pill={false}
+        type="button"
+        variant="outline"
+        size="icon"
+        className={`rounded-tr-none rounded-br-none ${inputOnlySm ? "hidden sm:block" : ""}`}
+        disabled={quantity === 1}
         onClick={() => setQuantity(Math.max(1, quantity - 1))}
       >
         -
       </Button>
-      <input
+      <Input
+        className={`z-10 w-[8ch] text-center sm:rounded-none ${inputOnlySm ? "" : "rounded-none"}`}
         type="number"
         name="itemCount"
         value={quantity}
         min={1}
         onChange={({ target }) => {
-          const newValue = Math.max(1, Number(target.value));
-          setQuantity(newValue);
+          const newValue = Math.max(1, Number(target.value))
+          setQuantity(newValue)
         }}
       />
       <Button
-        size="xs"
-        pill={false}
+        type="button"
+        variant="outline"
+        size="icon"
+        className={`rounded-tl-none rounded-bl-none ${inputOnlySm ? "hidden sm:block" : ""}`}
         onClick={() => setQuantity(Math.max(1, quantity + 1))}
       >
         +
       </Button>
     </div>
-  );
+  )
 }
