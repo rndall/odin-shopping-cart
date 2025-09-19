@@ -5,5 +5,5 @@ interface LoaderProps {
 }
 
 export default function Loader({ size = 24 }: LoaderProps) {
-  return <LoaderCircle className="animate-spin" size={size} />
+  return <LoaderCircle className="loading animate-spin" size={size} />
 }
