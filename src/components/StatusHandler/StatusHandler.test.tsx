@@ -1,26 +1,26 @@
-import { render, screen } from "@testing-library/react";
-import StatusHandler from "./StatusHandler";
+import { render, screen } from "@testing-library/react"
+import StatusHandler from "./StatusHandler"
 
-vi.mock("../ui/Loader/Loader", () => ({
+vi.mock("../ui/loader", () => ({
   default: () => <svg data-testid="loader"></svg>,
-}));
+}))
 
 describe("StatusHandler component", () => {
   test("return null if loading and error props aren't passed", () => {
-    const { container } = render(<StatusHandler />);
+    const { container } = render(<StatusHandler />)
 
-    expect(container).toBeEmptyDOMElement();
-  });
+    expect(container).toBeEmptyDOMElement()
+  })
 
   test("render Loader when loading prop is true", () => {
-    render(<StatusHandler loading />);
+    render(<StatusHandler loading />)
 
-    expect(screen.getByTestId("loader")).toBeInTheDocument();
-  });
+    expect(screen.getByTestId("loader")).toBeInTheDocument()
+  })
 
   test("render error message when error prop is passed", () => {
-    const { container } = render(<StatusHandler error="HTTP Error" />);
+    const { container } = render(<StatusHandler error="HTTP Error" />)
 
-    expect(container).toMatchSnapshot();
-  });
-});
+    expect(container).toMatchSnapshot()
+  })
+})
