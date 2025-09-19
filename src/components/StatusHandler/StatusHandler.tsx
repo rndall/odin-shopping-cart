@@ -1,4 +1,4 @@
-import Loader from "../ui/Loader/Loader"
+import Loader from "../ui/loader"
 
 interface StatusHandlerProps {
   loading?: boolean
