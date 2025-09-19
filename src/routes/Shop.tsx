@@ -1,5 +1,5 @@
-import ProductsCollection from "../features/products/components/ProductsCollection/ProductsCollection";
+import ProductsCollection from "../features/products/components/ProductsCollection"
 
 export default function Shop() {
-  return <ProductsCollection />;
+  return <ProductsCollection />
 }
