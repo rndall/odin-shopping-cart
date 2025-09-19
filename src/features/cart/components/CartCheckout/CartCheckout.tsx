@@ -1,7 +1,7 @@
 import { useCart } from "../../../products/hooks/useCart"
 
 import CartTable from "../CartTable/CartTable"
-import CheckoutFooter from "../CheckoutFooter/CheckoutFooter"
+import CheckoutFooter from "../CheckoutFooter"
 
 export default function CartCheckout() {
   const { cart, cartItemCount } = useCart()

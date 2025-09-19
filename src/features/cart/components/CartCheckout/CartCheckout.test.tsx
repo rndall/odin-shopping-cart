@@ -1,27 +1,27 @@
-import { render } from "@testing-library/react";
-import CartCheckout from "./CartCheckout";
-import { useCart } from "../../../products/hooks/useCart";
+import { render } from "@testing-library/react"
+import CartCheckout from "./CartCheckout"
+import { useCart } from "../../../products/hooks/useCart"
 
 vi.mock("../../../products/hooks/useCart", () => ({
   useCart: vi.fn(),
-}));
+}))
 
 vi.mock("../CartTable/CartTable", () => ({
   default: () => <div>Cart Table</div>,
-}));
+}))
 
-vi.mock("../CheckoutFooter/CheckOutFooter", () => ({
+vi.mock("../CheckOutFooter", () => ({
   default: ({ subtotal }: { subtotal: string }) => <div>{subtotal}</div>,
-}));
+}))
 
 describe("CartCheckout component", () => {
   const renderComponent = () => {
-    const { container } = render(<CartCheckout />);
+    const { container } = render(<CartCheckout />)
 
     return {
       container,
-    };
-  };
+    }
+  }
 
   test("render 'Items' if cartItemCount !== 1", () => {
     const mockedUseCartReturn = {
@@ -64,14 +64,14 @@ describe("CartCheckout component", () => {
       handleRemoveItem: () => {},
       handleAddToCart: () => {},
       handleClearCart: () => {},
-    };
+    }
 
-    vi.mocked(useCart).mockReturnValue(mockedUseCartReturn);
+    vi.mocked(useCart).mockReturnValue(mockedUseCartReturn)
 
-    const { container } = renderComponent();
+    const { container } = renderComponent()
 
-    expect(container).toMatchSnapshot();
-  });
+    expect(container).toMatchSnapshot()
+  })
 
   test("render 'Item' if cartItemCount === 1", () => {
     const mockedUseCartReturn = {
@@ -98,12 +98,12 @@ describe("CartCheckout component", () => {
       handleRemoveItem: () => {},
       handleAddToCart: () => {},
       handleClearCart: () => {},
-    };
+    }
 
-    vi.mocked(useCart).mockReturnValue(mockedUseCartReturn);
+    vi.mocked(useCart).mockReturnValue(mockedUseCartReturn)
 
-    const { container } = renderComponent();
+    const { container } = renderComponent()
 
-    expect(container).toMatchSnapshot();
-  });
-});
+    expect(container).toMatchSnapshot()
+  })
+})
