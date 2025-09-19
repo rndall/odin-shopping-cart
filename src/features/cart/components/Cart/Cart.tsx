@@ -1,18 +1,17 @@
-import styles from "./Cart.module.css";
+import { useCart } from "@/features/products/hooks/useCart"
 
-import { useCart } from "../../../products/hooks/useCart";
-
-import CartCheckout from "../CartCheckout/CartCheckout";
-import EmptyCart from "../EmptyCart/EmptyCart";
+import Container from "@/components/ui/container"
+import CartCheckout from "../CartCheckout/CartCheckout"
+import EmptyCart from "../EmptyCart/EmptyCart"
 
 export default function Cart() {
-  const { cart } = useCart();
+  const { cart } = useCart()
 
   return (
-    <section className={styles.section}>
-      <div className={`container`}>
+    <section className="mx-auto max-w-[1200px] py-4">
+      <Container>
         {cart.length > 0 ? <CartCheckout /> : <EmptyCart />}
-      </div>
+      </Container>
     </section>
-  );
+  )
 }
