@@ -1,5 +1,3 @@
-import styles from "./ProductsGridItem.module.css"
-
 import { Link } from "react-router"
 
 import { Star } from "lucide-react"
@@ -31,24 +29,26 @@ export default function ProductsGridItem({ product }: ProductsGridItemProps) {
   }
 
   return (
-    <div className={styles.product}>
-      <div className={styles.productContainer}>
-        <Link to={`/products/${product.id}`} className={styles.itemLink}>
-          <div className={styles.imageBg}>
-            <img className={styles.productImage} src={image} />
+    <div className="px-4 pb-4.5">
+      <div className="hover:border-primary flex flex-col gap-5 border-b-2 border-black pb-9.5 transition">
+        <Link to={`/products/${product.id}`} className="flex flex-col gap-5">
+          <div className="bg-gray-200 p-12 transition-colors hover:bg-gray-200/80">
+            <img className="h-100 object-contain" src={image} />
           </div>
 
-          <div className={styles.productDetails}>
-            <div className={styles.productHeading}>
-              <h2 className={styles.productTitle}>{title}</h2>
+          <div className="flex flex-col">
+            <div className="grid grid-cols-[1fr_50px] justify-between gap-3">
+              <h2 className="font-heading overflow-hidden text-xl text-ellipsis whitespace-nowrap uppercase">
+                {title}
+              </h2>
 
-              <div className={styles.productRating}>
+              <div className="flex items-center justify-end gap-1 text-sm">
                 <p>{rating.rate}</p>
                 <Star fill="yellow" size={20} />
               </div>
             </div>
 
-            <p className={styles.productPrice}>${price.toFixed(2)}</p>
+            <p className="text-sm">${price.toFixed(2)}</p>
           </div>
         </Link>
 
