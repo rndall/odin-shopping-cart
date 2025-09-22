@@ -3,7 +3,7 @@ import Home from "./routes/Home"
 import Shop from "./routes/Shop"
 import ShoppingCart from "./features/cart/routes/ShoppingCart"
 import CheckoutSuccess from "./routes/CheckoutSuccess"
-import Product from "./features/products/routes/Product/Product"
+import Product from "./features/products/routes/Product"
 import HydrateFallback from "./components/HydrateFallback"
 
 import { shopLoader, productLoader } from "./api/loaders"
