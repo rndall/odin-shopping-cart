@@ -10,7 +10,7 @@ vi.mock("../CartTable/CartTable", () => ({
   default: () => <div>Cart Table</div>,
 }))
 
-vi.mock("../CheckOutFooter", () => ({
+vi.mock("../CheckoutFooter", () => ({
   default: ({ subtotal }: { subtotal: string }) => <div>{subtotal}</div>,
 }))
 
