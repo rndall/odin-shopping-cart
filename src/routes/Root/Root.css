@@ -1,9 +1,0 @@
-.main {
-  margin-block-start: 64px;
-}
-
-@media (width >=40rem) {
-  .main {
-    margin-block-start: 88px;
-  }
-}

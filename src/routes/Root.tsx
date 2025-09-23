@@ -1,13 +1,11 @@
-import "./Root.css"
-
 import { Outlet, ScrollRestoration } from "react-router"
 
-import Navbar from "../../components/Navbar/Navbar"
+import Navbar from "../components/Navbar/Navbar"
 
-import type { CartItem } from "../../features/cart/types"
-import type { ContextType } from "../../types"
+import type { CartItem } from "../features/cart/types"
+import type { ContextType } from "../types"
 
-import { getCartLocalStorage, setCartLocalStorage } from "../../api"
+import { getCartLocalStorage, setCartLocalStorage } from "../api"
 
 import { useEffect, useReducer } from "react"
 
@@ -90,7 +88,7 @@ function Root() {
     <>
       <Navbar cartItemCount={cartItemCount} />
 
-      <main className="main">
+      <main className="mt-16 sm:mt-22">
         <Outlet
           context={
             {

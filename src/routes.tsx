@@ -1,4 +1,4 @@
-import Root from "./routes/Root/Root"
+import Root from "./routes/Root"
 import Home from "./routes/Home"
 import Shop from "./routes/Shop"
 import ShoppingCart from "./features/cart/routes/ShoppingCart"
