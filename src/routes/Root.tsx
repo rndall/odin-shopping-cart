@@ -29,7 +29,6 @@ function cartReducer(cart: State, action: CartAction) {
       return [...cart, action.cartItem]
     }
     case "adjusted": {
-      console.log(action)
       return cart.map((c) => {
         if (c.item.id === action.itemId) {
           return { ...c, quantity: action.quantity }
