@@ -38,7 +38,7 @@ export default function ProductsGridItem({ product }: ProductsGridItemProps) {
 
           <div className="flex flex-col">
             <div className="grid grid-cols-[1fr_50px] justify-between gap-3">
-              <h2 className="font-heading overflow-hidden text-xl text-ellipsis whitespace-nowrap uppercase">
+              <h2 className="font-heading truncate text-xl uppercase">
                 {title}
               </h2>
 
