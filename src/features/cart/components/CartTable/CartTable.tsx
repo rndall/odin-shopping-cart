@@ -1,28 +1,14 @@
-import styles from "./CartTable.module.css";
+import { useCart } from "@/features/products/hooks/useCart"
 
-import { useCart } from "../../../products/hooks/useCart";
-
-import CartTableRow from "../CartTableRow/CartTableRow";
+import { columns } from "./columns"
+import { DataTable } from "./data-table"
 
 export default function CartTable() {
-  const { cart } = useCart();
-  const tableHeaders = ["Item", "Quantity", "Price", ""];
+  const { cart } = useCart()
 
   return (
-    <div className={styles.table}>
-      <div className={styles.tableHeaders}>
-        {tableHeaders.map((th, i) => (
-          <div className={i === 0 ? styles.headerXs : ""} key={th}>
-            {th}
-          </div>
-        ))}
-      </div>
-
-      <div className={styles.tableBody}>
-        {cart.map(({ item, quantity }) => (
-          <CartTableRow key={item.id} item={item} quantity={quantity} />
-        ))}
-      </div>
+    <div className="my-4 sm:my-9">
+      <DataTable columns={columns} data={cart} />
     </div>
-  );
+  )
 }
