@@ -85,7 +85,7 @@ export default function Product() {
         </Container>
 
         <div
-          className={`fixed bottom-0 min-w-full translate-y-0 p-4 transition-transform sm:hidden ${
+          className={`fixed bottom-0 z-10 min-w-full translate-y-0 p-4 transition-transform sm:hidden ${
             !isAddToCardBtnVisible ? "" : "translate-y-full"
           }`}
         >
